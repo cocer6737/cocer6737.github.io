@@ -32,10 +32,10 @@
     .nav a{display:flex;height:4rem;align-items:center;justify-content:center;text-decoration:none;text-align:center}
     .nav a[aria-current="page"]{position:relative;color:var(--ink)}
     .nav a[aria-current="page"]:after{content:"";position:absolute;left:24%;right:24%;bottom:0;height:2px;background:var(--accent)}
-    .hero{padding:clamp(4.5rem,9vw,9rem) 0 clamp(5rem,10vw,9rem);border-bottom:1px solid var(--line)}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr);gap:8vw;align-items:end}
-    .hero h1{max-width:12ch;margin:0;font-size:clamp(3.8rem,8.2vw,8.5rem);font-weight:400;line-height:.92;letter-spacing:-.065em;text-wrap:balance}
-    .hero p{max-width:23rem;margin:0;color:var(--muted);font-size:clamp(1rem,1.3vw,1.22rem);line-height:1.9}
+    .hero{padding:clamp(3.75rem,6vw,6.5rem) 0;border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);column-gap:clamp(3rem,6vw,7rem);align-items:center}
+    .hero h1{max-width:none;margin:0;font-size:clamp(4.8rem,8vw,8rem);font-weight:400;line-height:.92;letter-spacing:-.055em;white-space:nowrap}
+    .hero p{justify-self:start;max-width:34rem;margin:0;color:var(--muted);font-size:clamp(1rem,1.3vw,1.2rem);line-height:1.85;text-wrap:pretty}
     .series{padding:clamp(4rem,7vw,7rem) 0;border-bottom:1px solid var(--line)}
     .series-head{max-width:none;margin-bottom:clamp(3rem,5vw,5rem);padding:clamp(1.8rem,3vw,3rem);background:#df5a22;color:#fff}
     .series-kicker{margin:0 0 .65rem;font-family:var(--sans);font-size:.76rem;letter-spacing:.16em;color:inherit}
@@ -99,8 +99,9 @@
     @media(max-width:900px){
       .brand{min-height:5.5rem;font-size:clamp(1.08rem,6vw,1.65rem)}
       .nav{font-size:.7rem}.nav a{height:3.5rem}
-      .hero-grid,.year-head{grid-template-columns:1fr;gap:2.5rem}
-      .hero h1{font-size:clamp(3.7rem,16vw,6rem)}
+      .hero-grid,.year-head{grid-template-columns:1fr;gap:2rem}
+      .hero h1{font-size:clamp(3.7rem,15vw,5.8rem)}
+      .hero p{max-width:38rem}
       .year-mark{font-size:5rem}
       .timeline{gap:5rem}.timeline:before{left:0}
       .event,.event:nth-child(even){grid-template-columns:1fr;padding-left:1.5rem;gap:1.2rem}
@@ -113,7 +114,7 @@
     @media(max-width:560px){
       .shell{width:min(calc(100% - 28px),1440px)}
       .nav a:nth-child(2),.nav a:nth-child(3),.nav a:nth-child(5){display:none}.nav{grid-template-columns:1fr 1fr}
-      .hero{padding:4.5rem 0 5rem}.intro{padding-top:3rem}.year{padding-bottom:6rem}
+      .hero{padding:3.75rem 0 4rem}.intro{padding-top:3rem}.year{padding-bottom:6rem}
       .profile,.profile:nth-child(3){grid-column:span 12}.profile:nth-child(2){margin-top:0}.bookshelf{gap:4rem}
       .archive{grid-template-columns:1fr}
       .footer-line{display:block}.footer small{display:block;margin-top:1.5rem}
@@ -131,7 +132,7 @@
   </header>
   <main id="main">
     <section class="hero"><div class="shell hero-grid">
-      <h1>《The Next》<br>系列</h1>
+      <h1>The Next</h1>
       <p>从认识一个人开始，走进他的视角，看懂他的选择、关系与创造。卓越者、年轻合伙人、Community 与身心灵共创，共同记录内在资本如何被看见、积累，并持续转化为人生的无限财富。</p>
     </div></section>
 
@@ -205,5 +206,4 @@
   <footer class="footer"><div class="shell footer-line"><div class="footer-brand">INNER CAPITAL GROUP</div><small>内在资本</small></div></footer>
 </body>
 </html>
-
 
