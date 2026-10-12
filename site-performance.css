@@ -1,0 +1,18 @@
+/* Keep native scrolling and all service choices accessible on smaller screens. */
+@media (max-width: 640px) {
+  [role="tablist"][aria-label="选择核心服务"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+  [role="tablist"][aria-label="选择核心服务"] [role="tab"] {
+    min-width: 0;
+    min-height: 64px;
+    padding-inline: 12px;
+  }
+  .service-workspace-module__pZzLmq__panel { animation: none; }
+  input, textarea, select { font-size: 16px; }
+  footer a { min-height: 44px; padding-block: 10px; }
+}
+[aria-label="滚动或拖拽，循环浏览四项核心服务"],
+[data-service-card="true"] { touch-action: pan-y pinch-zoom !important; }
