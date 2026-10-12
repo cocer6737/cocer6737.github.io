@@ -4,10 +4,12 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {homeIntroduction, homeIntroductionSegments} from './home-introduction.mjs';
+import {siteOrigin} from './site-config.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const routes=['','services','about','insights','contact'];
 const locales=['','en','yue'];
 const video=['AsASofsYvd','A33gyO7eCW','AY0RK6NIQE','ApTg7CnWvQ','AssatN6YE7','ApeZgHNtn0'];
+assert.equal(fs.readFileSync(path.join(root,'CNAME'),'utf8').trim(),new URL(siteOrigin).hostname,'Deployment domain matches page metadata');
 let documents=0,links=0;
 for(const locale of locales) for(const route of routes) {
   const filename=path.join(root,locale,route,'index.html'), html=fs.readFileSync(filename,'utf8');
@@ -20,6 +22,9 @@ for(const locale of locales) for(const route of routes) {
   assert.equal((markup.match(/ data-site-language="/g)||[]).length,1,'One language attribute per document');
   assert.equal((markup.match(/rel="canonical"/g)||[]).length,1);
   assert.equal((markup.match(/rel="alternate"/g)||[]).length,4);
+  const pagePath=`${locale?'/'+locale:''}/${route?route+'/':''}`;
+  assert(markup.includes(`<link rel="canonical" href="${siteOrigin}${pagePath}">`),'Canonical uses the deployment domain');
+  for(const alternate of markup.matchAll(/<link rel="alternate"[^>]+href="([^"]+)"/g)) assert.equal(new URL(alternate[1]).origin,siteOrigin,'Language alternatives stay on the deployment domain');
   if(route==='') {
     assert.equal((markup.match(/href="\/home-introduction-20261012-1\.css"/g)||[]).length,1);
     const language=locale||'zh';
