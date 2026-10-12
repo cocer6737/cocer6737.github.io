@@ -1,4 +1,5 @@
 // Reviewed, human-readable translation catalogue. Columns: source | English | Cantonese.
+import { homeIntroduction, homeIntroductionSources } from './home-introduction.mjs';
 const rows = String.raw`
 首页|Home|首頁
 核心服务|Services|核心服務
@@ -25,7 +26,6 @@ The Next 人物与活动｜Inner Capital Group|Inner Capital: The Next & Communi
 连接财富、科技与长期价值|Connecting wealth, technology and people|連結財富、科技與長遠價值
 连接全球专业资源，共创长期价值|Connecting global expertise. Building lasting value.|連結全球專業資源，一齊創造長遠價值
 AI 赋能财富，连接全球资源，共创长期价值|AI for wealth. Global connections. The Next Fortune.|以 AI 支援財富管理，連結全球資源，一齊創造長遠價值
-Inner Capital Group 围绕财富与家族、企业国际化、AI 科技赋能及高端社群与生态四大核心服务，为企业家、高净值家庭与家族办公室，提供家办基础建设、企业出海咨询及全球专业资源的一站式综合解决方案。|Based in Singapore, we support entrepreneurs, high-net-worth families and family offices with wealth and legacy planning, international expansion and practical AI applications. We help build family office infrastructure, connect clients with global expertise and bring people together through a private community.|Inner Capital Group 以財富與家族、企業國際化、AI 科技及高端社群與生態四大服務，為企業家、高淨值家庭同家族辦公室提供家辦基礎建設、企業出海諮詢及全球專業資源連結，協助客戶統籌長遠需要。
 Inner Capital Group 围绕财富与家族、企业国际化、AI 与创新及私享俱乐部提供综合服务。|Explore our services in family wealth and legacy, international business expansion, AI innovation and our private community.|了解我哋喺財富與家族、企業國際化、AI 創新及私享俱樂部方面嘅綜合服務。
 了解 Inner Capital Group 的长期价值理念、跨领域专业团队与核心优势。|Learn about Inner Capital Group, our multidisciplinary team and our approach to lasting value.|了解 Inner Capital Group 嘅長遠價值理念、跨領域團隊同服務優勢。
 联系 Inner Capital Group，了解家办基础建设、企业出海咨询及全球专业资源连接服务。|Contact Inner Capital Group for family office infrastructure, international expansion advisory and access to global professional expertise.|聯絡 Inner Capital Group，了解家辦基礎建設、企業出海諮詢同全球專業資源連結服務。
@@ -338,3 +338,4 @@ export const copy = new Map((rows + more).trim().split('\n').filter(Boolean).map
   const first = line.indexOf('|'), last = line.lastIndexOf('|');
   return [line.slice(0, first), { en: line.slice(first + 1, last), yue: line.slice(last + 1) }];
 }));
+for (const source of homeIntroductionSources) copy.set(source, { en: homeIntroduction.en, yue: homeIntroduction.yue });

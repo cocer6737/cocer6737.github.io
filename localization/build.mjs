@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { copy } from './copy.mjs';
 import { refineEnglishInsights } from './english-editorial.mjs';
+import { homeIntroduction, homeIntroductionSources, homeIntroductionSegments } from './home-introduction.mjs';
 
 const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const routes = ['', 'services', 'about', 'insights', 'contact'];
@@ -15,6 +16,7 @@ const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').r
 const unescape = s => s.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
 const destination = (locale, route) => `${locale === 'zh' ? '' : '/' + locale}/${route ? route + '/' : ''}`;
 function translate(value, locale, report = true) {
+  if (homeIntroductionSources.has(value)) return homeIntroduction[locale];
   if (locale === 'zh') {
     if (value === 'Inner Capital Group｜中文首页视觉样板') return 'Inner Capital Group｜财富、企业与全球资源';
     if (value === 'Inner Capital Group 中文首页静态视觉设计样板。') return 'Inner Capital Group 提供财富与家族、企业国际化、AI 与创新及私享社群综合服务。';
@@ -97,8 +99,9 @@ function transform(value, locale, route, key = '') {
   }
   if (value && typeof value === 'object') {
     const result = Object.fromEntries(Object.entries(value).map(([k,v])=>[k,k === 'wrapSegments' ? v : transform(v,locale,route,k)]));
-    if (locale !== 'zh' && typeof value.children === 'string' && 'baseOpacity' in value && 'baseRotation' in value) {
-      result.wrapSegments = locale === 'en' ? result.children.match(/\S+\s*/g) || [result.children] : Array.from(result.children);
+    if (typeof value.children === 'string' && 'baseOpacity' in value && 'baseRotation' in value) {
+      if (route === '' && homeIntroductionSources.has(value.children)) result.wrapSegments = homeIntroductionSegments(locale);
+      else if (locale !== 'zh') result.wrapSegments = locale === 'en' ? result.children.match(/\S+\s*/g) || [result.children] : Array.from(result.children);
     }
     return result;
   }

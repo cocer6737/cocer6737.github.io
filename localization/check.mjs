@@ -3,6 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
+import {homeIntroduction, homeIntroductionSegments} from './home-introduction.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const routes=['','services','about','insights','contact'];
 const locales=['','en','yue'];
@@ -19,10 +20,16 @@ for(const locale of locales) for(const route of routes) {
   assert.equal((markup.match(/ data-site-language="/g)||[]).length,1,'One language attribute per document');
   assert.equal((markup.match(/rel="canonical"/g)||[]).length,1);
   assert.equal((markup.match(/rel="alternate"/g)||[]).length,4);
+  if(route==='') {
+    const language=locale||'zh';
+    const introduction=markup.match(/<p class="scroll-reveal__text[^>]*>([\s\S]*?)<\/p>/)[1].replace(/<br\s*\/?>/g,'\n').replace(/<[^>]*>/g,'').replaceAll('\u00a0',' ');
+    assert.equal(introduction,homeIntroduction[language],'Only the approved home introduction');
+    assert.equal(homeIntroductionSegments(language).join(''),homeIntroduction[language]);
+  }
   if(locale==='en') {
     const text=markup.replace(/<style\b[\s\S]*?<\/style>/g,'').replace(/<[^>]*>/g,'').replaceAll('\u00a0',' ');
     assert.equal((text.match(/The Next Fortune/g)||[]).length,route===''?1:0,'The Next Fortune is reserved for the home title');
-    if(route===''||route==='about') assert(text.includes('family office infrastructure'),'Keep the approved family office terminology');
+    if(route==='about') assert(text.includes('family office infrastructure'),'Keep family office terminology elsewhere unchanged');
     if(route==='insights') {
       assert(text.includes('Next-Generation Voices'));
       assert(text.includes('Wellbeing &amp; Community Events'));
