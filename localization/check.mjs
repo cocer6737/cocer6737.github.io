@@ -16,6 +16,7 @@ for(const locale of locales) for(const route of routes) {
   const languageMarkup=markup.match(/<nav class="language-switch"[\s\S]*?<\/nav>/)[0];
   assert.equal((languageMarkup.match(/aria-current="true"/g)||[]).length,1,filename);
   assert(markup.includes(`lang="${locale==='en'?'en-SG':locale==='yue'?'yue-Hant':'zh-Hans'}"`));
+  assert.equal((markup.match(/ data-site-language="/g)||[]).length,1,'One language attribute per document');
   assert.equal((markup.match(/rel="canonical"/g)||[]).length,1);
   assert.equal((markup.match(/rel="alternate"/g)||[]).length,4);
   if(route==='insights') for(const id of video) assert(markup.includes('https://weixin.qq.com/sph/'+id));

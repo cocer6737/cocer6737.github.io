@@ -146,7 +146,7 @@ function htmlPage(source, locale, route, flight) {
     if (token.startsWith('<')) return chunkRef(token.replace(/\b(alt|aria-label|placeholder|title|content|href)="([^"]*)"/g,(m,key,v)=>`${key}="${escape(key==='href'?localHref(unescape(v),locale):translate(unescape(v),locale))}"`),locale);
     return escape(translate(unescape(token),locale));
   });
-  html=html.replace(/<html lang="[^"]*"/,`<html lang="${locale==='zh'?'zh-Hans':locale==='en'?'en-SG':'yue-Hant'}" data-site-language="${locale}"`);
+  html=html.replace(/ data-site-language="[^"]*"/g,'').replace(/<html lang="[^"]*"/,`<html lang="${locale==='zh'?'zh-Hans':locale==='en'?'en-SG':'yue-Hant'}" data-site-language="${locale}"`);
   if (!html.includes('class="language-switch"')) html=html.replace(/<header\b([^>]*)>/,(m,attrs)=>`<header${attrs.replace(/class="([^"]*)"/,'class="$1 site-header"')}>${render(selector(locale,route))}`);
   if (locale==='en' && route==='about') html=html.replace('>，</span>','>. </span>');
   html=syncReveals(html,flight);
