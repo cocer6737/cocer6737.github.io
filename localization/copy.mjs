@@ -22,9 +22,9 @@ Inner Capital Group 中文首页静态视觉设计样板。|Family wealth, busin
 关于我们｜Inner Capital Group|About Us | Inner Capital Group|關於我哋｜Inner Capital Group
 联系我们｜Inner Capital Group|Contact Us | Inner Capital Group|聯絡我哋｜Inner Capital Group
 The Next 人物与活动｜Inner Capital Group|Inner Capital: The Next & Community Events | Inner Capital Group|內在資本：The Next 人物與活動｜Inner Capital Group
-连接财富、科技与长期价值|Connecting wealth, technology and lasting value|連結財富、科技與長遠價值
-连接全球专业资源，共创长期价值|Connecting global expertise. Creating lasting value.|連結全球專業資源，一齊創造長遠價值
-AI 赋能财富，连接全球资源，共创长期价值|AI for wealth. Global connections. Lasting value.|以 AI 支援財富管理，連結全球資源，一齊創造長遠價值
+连接财富、科技与长期价值|Connecting wealth, technology and The Next Fortune|連結財富、科技與長遠價值
+连接全球专业资源，共创长期价值|Connecting global expertise. Creating The Next Fortune.|連結全球專業資源，一齊創造長遠價值
+AI 赋能财富，连接全球资源，共创长期价值|AI for wealth. Global connections. The Next Fortune.|以 AI 支援財富管理，連結全球資源，一齊創造長遠價值
 Inner Capital Group 围绕财富与家族、企业国际化、AI 科技赋能及高端社群与生态四大核心服务，为企业家、高净值家庭与家族办公室，提供家办基础建设、企业出海咨询及全球专业资源的一站式综合解决方案。|Inner Capital Group supports entrepreneurs, high-net-worth families and family offices through four core services: family wealth and legacy, business internationalisation, AI technology and a global private community. We bring together family office infrastructure, international expansion advisory and access to professional expertise worldwide.|Inner Capital Group 以財富與家族、企業國際化、AI 科技及高端社群與生態四大服務，為企業家、高淨值家庭同家族辦公室提供家辦基礎建設、企業出海諮詢及全球專業資源連結，協助客戶統籌長遠需要。
 Inner Capital Group 围绕财富与家族、企业国际化、AI 与创新及私享俱乐部提供综合服务。|Explore our services in family wealth and legacy, business internationalisation, AI innovation and our private club.|了解我哋喺財富與家族、企業國際化、AI 創新及私享俱樂部方面嘅綜合服務。
 了解 Inner Capital Group 的长期价值理念、跨领域专业团队与核心优势。|Learn about Inner Capital Group, our multidisciplinary team and our approach to lasting value.|了解 Inner Capital Group 嘅長遠價值理念、跨領域團隊同服務優勢。
@@ -32,7 +32,7 @@ Inner Capital Group 围绕财富与家族、企业国际化、AI 与创新及私
 以专业服务守护财富，以长期规划成就家族未来|Professional support for your wealth. Long-term planning for your family's future.|以專業服務守護財富，以長遠規劃支持家族未來
 围绕企业出海需求，连接新加坡及全球专业资源|Supporting international expansion with expertise in Singapore and beyond.|按企業出海需要，連結新加坡同全球專業資源
 围绕企业运营场景，提供 AI 转型与创新咨询|AI transformation and innovation advisory grounded in your business operations.|配合企業實際營運，提供 AI 轉型同創新諮詢
-汇聚全球资源，共创长期价值|Bringing global resources together to create lasting value.|匯聚全球資源，一齊創造長遠價值
+汇聚全球资源，共创长期价值|Bringing global resources together to create The Next Fortune.|匯聚全球資源，一齊創造長遠價值
 开启您的财富规划之旅|Start planning for your future|開始規劃您嘅財富未來
 欢迎与 Inner Capital Group 团队交流您的需求与下一步计划。|Speak with the Inner Capital Group team about your priorities and next steps.|歡迎同 Inner Capital Group 團隊交流您嘅需要同下一步計劃。
 欢迎与 Inner Capital Group 顾问团队进行一对一交流。|Arrange a one-to-one conversation with our advisory team.|歡迎同 Inner Capital Group 顧問團隊安排一對一交流。
@@ -147,7 +147,7 @@ AI 与金融科技|AI and financial technology|AI 及金融科技
 国际媒体与资源平台|International media and resource platforms|國際媒體及資源平台
 依托全球科技与创新资源，促进跨行业合作，持续拓展国际影响力。|Using global technology and innovation networks to foster cross-sector collaboration and expand international reach.|透過全球科技同創新資源，促進跨行業合作，持續拓展國際影響力。
 社群交流与资源共创|Community & Collaboration|社群交流與資源共創
-在真实连接中，共创长期价值|Lasting value through meaningful connections|透過真誠連結，一齊創造長遠價值
+在真实连接中，共创长期价值|The Next Fortune through meaningful connections|透過真誠連結，一齊創造長遠價值
 企业家私享交流|Private entrepreneur gatherings|企業家私享交流
 创业者成长平台|Entrepreneur development platforms|創業者成長平台
 资源链接与项目共创|Resource connections and collaborative projects|資源連結及項目共創
@@ -326,7 +326,7 @@ Barry Li 活跃于硅谷创业与加速器社群，关注创始人训练、产�
 全球|global |全球
 专业资源|expertise|專業資源
 共创|Creating |一齊創造
-长期价值|lasting value.|長遠價值
+长期价值|The Next Fortune.|長遠價值
 `;
 export const copy = new Map((rows + more).trim().split('\n').filter(Boolean).map((line) => {
   // English page titles use a typographic vertical bar; split from both ends.

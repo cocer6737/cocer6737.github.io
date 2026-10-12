@@ -8,6 +8,8 @@ const routes = ['', 'services', 'about', 'insights', 'contact'];
 const locales = ['zh', 'en', 'yue'];
 const chunks = ['0mm76i68izmm_', '0p6x_ig3clcq_', '2fyh3ok81idvc', '2nrgwjf1qvm9h-about-v3', '1nefr52yq5w43-contact-qr-v2'];
 const revision = '20261012-1';
+const updatedEnglishChunks = new Set(['0mm76i68izmm_', '0p6x_ig3clcq_', '2nrgwjf1qvm9h-about-v3']);
+const clientRevision = (chunk, locale) => locale === 'en' && updatedEnglishChunks.has(chunk) ? '20261012-2' : revision;
 const untranslated = new Set();
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const unescape = s => s.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
@@ -47,7 +49,7 @@ function localHref(value, locale) {
 }
 function chunkRef(value, locale) {
   if (locale === 'zh') return value;
-  for (const chunk of chunks) value = value.replaceAll(`${chunk}.js`, `${chunk}-${locale}-${revision}.js`);
+  for (const chunk of chunks) value = value.replaceAll(`${chunk}.js`, `${chunk}-${locale}-${clientRevision(chunk, locale)}.js`);
   return value;
 }
 const element = (tag, props, children) => ['$' ,tag, null, {...props, ...(children === undefined ? {} : {children})}];
@@ -166,7 +168,7 @@ for (const locale of ['en','yue']) for (const chunk of chunks) {
     .replace('打开${e.title}详细介绍',locale==='en'?'Explore ${e.title}':'查看${e.title}詳情')
     .replace('将${e.title}移到中央',locale==='en'?'Bring ${e.title} to the centre':'將${e.title}移到中央');
   if(locale==='en' && chunk.startsWith('2nrg')) text=text.replace('children:"，"','children:". "');
-  fs.writeFileSync(path.join(site,'_next/static/chunks',`${chunk}-${locale}-${revision}.js`),text);
+  fs.writeFileSync(path.join(site,'_next/static/chunks',`${chunk}-${locale}-${clientRevision(chunk, locale)}.js`),text);
 }
 // Read all sources before altering the Chinese originals.
 const sources=new Map(routes.map(route=>[route,{

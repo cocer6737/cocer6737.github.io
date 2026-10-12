@@ -28,7 +28,7 @@ for(const locale of locales) for(const route of routes) {
   }
   documents++;
 }
-for(const name of fs.readdirSync(path.join(root,'_next/static/chunks')).filter(n=>/-(?:en|yue)-20261012-1\.js$/.test(n))) execFileSync(process.execPath,['--check',path.join(root,'_next/static/chunks',name)]);
+for(const name of fs.readdirSync(path.join(root,'_next/static/chunks')).filter(n=>/-(?:en|yue)-20261012-\d+\.js$/.test(n))) execFileSync(process.execPath,['--check',path.join(root,'_next/static/chunks',name)]);
 execFileSync(process.execPath,['--check',path.join(root,'language-switch-20261012-1.js')]);
 function luminance(hex) {const c=hex.match(/\w\w/g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
 const contrast=(luminance('fffaf3')+.05)/(luminance('a8330e')+.05);
