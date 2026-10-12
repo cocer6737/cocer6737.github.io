@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="yue-Hant" data-site-language="yue" data-site-language="zh" data-site-language="zh" data-site-language="zh" data-site-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>內在資本：The Next 人物與活動｜Inner Capital Group</title>
+  <meta name="description" content="由人物、關係同創造出發，記錄卓越者、年輕合夥人、Community 同身心靈共創，探索內在資本點樣累積同豐富人生。">
+  <style>
+    :root{
+      color-scheme:light;
+      --paper:#f7f4ee;
+      --paper-2:#ede9e1;
+      --ink:#303842;
+      --muted:#707983;
+      --line:rgba(48,56,66,.22);
+      --accent:#d94b18;
+      --accent-dark:#a8330e;
+      --editorial:"Songti SC","STSong","Noto Serif CJK SC","Iowan Old Style",Baskerville,"Times New Roman",serif;
+      --sans:"PingFang SC","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--editorial);text-rendering:optimizeLegibility}
+    img{display:block;width:100%}
+    a{color:inherit}
+    a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    .skip{position:absolute;left:-9999px;top:1rem}.skip:focus{left:1rem;z-index:100;background:var(--paper);padding:.75rem 1rem}
+    .shell{width:min(calc(100% - 40px),1440px);margin:auto}
+    .masthead{border-bottom:1px solid var(--line)}
+    .brand{display:flex;min-height:7rem;align-items:center;justify-content:center;border-bottom:1px solid var(--line);font-size:clamp(1.25rem,5vw,3.4rem);line-height:1;letter-spacing:.08em;text-decoration:none}
+    .nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));font-size:clamp(.72rem,1.15vw,1.05rem);color:var(--muted)}
+    .nav a{display:flex;height:4rem;align-items:center;justify-content:center;text-decoration:none;text-align:center}
+    .nav a[aria-current="page"]{position:relative;color:var(--ink)}
+    .nav a[aria-current="page"]:after{content:"";position:absolute;left:24%;right:24%;bottom:0;height:2px;background:var(--accent)}
+    .hero{padding:clamp(3.75rem,6vw,6.5rem) 0;border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);column-gap:clamp(3rem,6vw,7rem);align-items:center}
+    .hero h1{max-width:none;margin:0;font-size:clamp(4.8rem,8vw,8rem);font-weight:400;line-height:.92;letter-spacing:-.055em;white-space:nowrap}
+    .hero p{justify-self:start;max-width:34rem;margin:0;color:var(--muted);font-size:clamp(1rem,1.3vw,1.2rem);line-height:1.85;text-wrap:pretty}
+    .series{padding:clamp(4rem,7vw,7rem) 0;border-bottom:1px solid var(--line)}
+    .series-head{max-width:none;margin-bottom:clamp(3rem,5vw,5rem);padding:clamp(1.8rem,3vw,3rem);background:#df5a22;color:#fff}
+    .series-kicker{margin:0 0 .65rem;font-family:var(--sans);font-size:.76rem;letter-spacing:.16em;color:inherit}
+    .series h2{margin:0 0 .75rem;font-size:clamp(2.7rem,5vw,5.2rem);font-weight:400;line-height:1;letter-spacing:-.045em}
+    .series-head>p:last-child{max-width:42rem;margin:0;color:rgba(255,255,255,.88);font-size:1rem;line-height:1.8}
+    .bookshelf{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(3.5rem,7vw,7rem) clamp(1.5rem,3vw,3rem);align-items:start}
+    .profile{grid-column:span 4;min-width:0}
+    .profile:nth-child(2){margin-top:0}
+    .profile-cover{overflow:hidden;background:#d8dfe1;aspect-ratio:4/5}
+    a.profile-cover{display:block;cursor:pointer}
+    .profile-cover img{height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+    @media(hover:hover) and (pointer:fine){.profile:hover .profile-cover img{transform:scale(1.018)}}
+    .profile-index{margin:1.4rem 0 .7rem;font-family:var(--sans);font-size:.75rem;color:var(--accent-dark);font-variant-numeric:tabular-nums}
+    .profile h3{margin:0 0 1rem;font-size:clamp(1.65rem,2.65vw,2.8rem);font-weight:400;line-height:1.25}
+    .profile-role{min-height:3.2em;margin:0 0 1.1rem;font-family:var(--sans);font-size:.84rem;line-height:1.6;color:var(--muted)}
+    .profile-bio{margin:0;color:var(--ink);font-size:.96rem;line-height:1.9}
+    .profile-source{display:inline-block;margin-top:1rem;font-family:var(--sans);font-size:.72rem;color:var(--muted);text-underline-offset:4px}
+    .partners{background:#edf2f2}
+    .partners .series-head{background:#159bb0}
+    .partners .profile-cover{background:#cbdfe2}
+    .intro{padding:4rem 0 0}
+    .intro .shell{padding:clamp(2rem,3.5vw,3.5rem);background:#241b17}
+    .intro h2{max-width:none;margin:0;color:#d6b462;font-size:clamp(2.5rem,5vw,5.2rem);font-weight:400;line-height:1;letter-spacing:-.04em}
+    .year{padding:4rem 0 8rem}
+    .year-head{display:grid;grid-template-columns:1fr 2fr;gap:5vw;align-items:start;margin-bottom:4rem}
+    .year-mark{font-family:var(--sans);font-size:clamp(4.5rem,10vw,10rem);font-weight:300;line-height:.8;letter-spacing:-.08em;color:var(--accent)}
+    .year-copy{max-width:39rem;margin:0;color:var(--muted);font-size:1.03rem;line-height:1.9}
+    .timeline{position:relative;display:grid;gap:7rem}
+    .timeline:before{content:"";position:absolute;left:calc(18% - 1px);top:0;bottom:0;width:1px;background:var(--line)}
+    .event{position:relative;display:grid;grid-template-columns:18% 43% 1fr;gap:clamp(1.5rem,3vw,3.5rem);align-items:center}
+    .event:nth-child(even){grid-template-columns:18% 1fr 43%}
+    .event:nth-child(even) .event-media{grid-column:3}
+    .event:nth-child(even) .event-copy{grid-column:2;grid-row:1}
+    .event-date{position:relative;padding-right:2rem;font-family:var(--sans);font-size:clamp(1rem,1.4vw,1.2rem);font-variant-numeric:tabular-nums;color:var(--accent-dark)}
+    .event-date:after{content:"";position:absolute;right:-5px;top:.35rem;width:9px;height:9px;border:1px solid var(--accent);background:var(--paper);border-radius:50%}
+    .event-media{overflow:hidden;background:var(--paper-2);aspect-ratio:16/10}
+    .event-media img{height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+    @media(hover:hover) and (pointer:fine){.event:hover .event-media img{transform:scale(1.018)}}
+    .crop-feed-july img{object-position:center 30%}
+    .crop-feed-june img{object-position:center 62%}
+    .event-copy{padding-top:.15rem}
+    .event-type{margin:0 0 1.15rem;font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;color:var(--muted)}
+    .event h3{margin:0 0 1.5rem;font-size:clamp(1.65rem,2.8vw,3.2rem);font-weight:400;line-height:1.35;letter-spacing:-.025em;text-wrap:pretty}
+    .source{display:inline-flex;align-items:center;gap:.65rem;padding:.62rem 0;border-bottom:1px solid var(--accent);font-family:var(--sans);font-size:.86rem;color:var(--accent-dark);text-decoration:none;white-space:nowrap}
+    .source:after{content:"↗";font-size:1rem}
+    .source:hover{color:var(--accent)}
+    .pending{padding:7rem 0 9rem;background:var(--paper-2)}
+    .pending-head{max-width:47rem;margin-bottom:4rem}
+    .pending h2{margin:0 0 1.2rem;font-size:clamp(2.7rem,6vw,6rem);font-weight:400;line-height:1;letter-spacing:-.05em}
+    .pending-head p{margin:0;color:var(--muted);line-height:1.9}
+    .archive{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(3rem,5vw,5rem) clamp(1.5rem,3vw,3rem)}
+    .archive-card{min-width:0}
+    .archive-card img{aspect-ratio:16/10;object-fit:cover;background:#ddd8ce}
+    .archive-meta{display:flex;justify-content:space-between;gap:1rem;margin:1.15rem 0 .8rem;font-family:var(--sans);font-size:.75rem;color:var(--muted)}
+    .archive-card h3{margin:0 0 1rem;font-size:clamp(1.35rem,2vw,2.15rem);font-weight:400;line-height:1.45}
+    .note{padding:4rem 0;border-top:1px solid var(--line)}
+    .note p{max-width:54rem;margin:0;color:var(--muted);line-height:1.9}
+    .footer{padding:4rem 0;background:#282f36;color:#d8dde1}
+    .footer-line{display:flex;justify-content:space-between;gap:2rem;align-items:end}
+    .footer-brand{font-size:1.3rem;letter-spacing:.08em}
+    .footer small{font-family:var(--sans);color:#aeb6bd}
+    @media(max-width:900px){
+      .brand{min-height:5.5rem;font-size:clamp(1.08rem,6vw,1.65rem)}
+      .nav{font-size:.7rem}.nav a{height:3.5rem}
+      .hero-grid,.year-head{grid-template-columns:1fr;gap:2rem}
+      .hero h1{font-size:clamp(3.7rem,15vw,5.8rem)}
+      .hero p{max-width:38rem}
+      .year-mark{font-size:5rem}
+      .timeline{gap:5rem}.timeline:before{left:0}
+      .event,.event:nth-child(even){grid-template-columns:1fr;padding-left:1.5rem;gap:1.2rem}
+      .event:nth-child(even) .event-media,.event:nth-child(even) .event-copy{grid-column:auto;grid-row:auto}
+      .event-date{padding:0}.event-date:after{left:-1.8rem;right:auto}
+      .event-media{aspect-ratio:4/3}.event-copy{padding-top:.6rem}
+      .archive{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .profile{grid-column:span 6}.profile:nth-child(2){margin-top:0}.profile:nth-child(3){grid-column:3/span 8}
+    }
+    @media(max-width:560px){
+      .shell{width:min(calc(100% - 28px),1440px)}
+      .nav{grid-template-columns:repeat(5,minmax(0,1fr));font-size:clamp(.68rem,2.7vw,.75rem)}
+      .nav a{min-width:0;padding-inline:2px}
+      .hero{padding:3.75rem 0 4rem}.intro{padding-top:3rem}.year{padding-bottom:6rem}
+      .bookshelf{grid-template-columns:minmax(0,1fr);row-gap:4rem;column-gap:0}
+      .profile,.profile:nth-child(3){grid-column:auto}.profile:nth-child(2){margin-top:0}
+      .archive{grid-template-columns:1fr}
+      .footer-line{display:block}.footer small{display:block;margin-top:1.5rem}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.event-media img,.profile-cover img{transition:none}.event:hover .event-media img,.profile:hover .profile-cover img{transform:none}}
+  </style>
+<link rel="alternate" hreflang="zh-Hans" href="https://cocer6737.github.io/insights/"><link rel="alternate" hreflang="en" href="https://cocer6737.github.io/en/insights/"><link rel="alternate" hreflang="yue-Hant" href="https://cocer6737.github.io/yue/insights/"><link rel="alternate" hreflang="x-default" href="https://cocer6737.github.io/insights/"><link rel="canonical" href="https://cocer6737.github.io/yue/insights/"><link rel="stylesheet" href="/language-switch-20261012-1.css"><script defer src="/language-switch-20261012-1.js"></script></head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="masthead site-header"><nav class="language-switch" aria-label="Language / 语言 / 語言"><a href="/insights/" lang="zh-Hans" hreflang="zh-Hans" data-language="zh" aria-label="简体中文">简中</a><a href="/en/insights/" lang="en" hreflang="en" data-language="en" aria-label="English">EN</a><a href="/yue/insights/" lang="yue-Hant" hreflang="yue-Hant" data-language="yue" aria-current="true" aria-label="繁體粵語">粵語</a></nav>
+    <a class="brand" href="/yue/">INNER CAPITAL GROUP</a>
+    <nav class="nav" aria-label="網站導覽">
+      <a href="/yue/">首頁</a><a href="/yue/services/">核心服務</a><a href="/yue/about/">關於我哋</a><a href="/yue/insights/" aria-current="page">內在資本</a><a href="/yue/contact/">聯絡我哋</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero"><div class="shell hero-grid">
+      <h1>The Next</h1>
+      <p>由認識一個人開始，走入佢嘅視角，了解佢嘅選擇、關係同創造。卓越者、年輕合夥人、Community 同身心靈共創，一齊記錄內在資本點樣被看見、累積，並持續豐富人生。</p>
+    </div></section>
+
+    <section class="series" id="outstanding"><div class="shell">
+      <div class="series-head"><p class="series-kicker">FOR THE NEXT</p><h2>卓越者</h2><p>記錄喺事業、創造同長遠選擇中走出自己路向嘅人。每一期以一張封面同一段簡介，帶您走入佢嘅故事。</p></div>
+      <div class="bookshelf">
+        <article class="profile"><a class="profile-cover" href="https://weixin.qq.com/sph/A33gyO7eCW" target="_blank" rel="noopener noreferrer" aria-label="觀看 Peter Ng 嘅微信影片（新視窗開啟）"><img src="/insights/assets/the-next-series/outstanding-peter.webp" alt="The Next 人物海報：Peter" loading="lazy" decoding="async" width="1080" height="1440" srcset="/insights/assets/the-next-series/outstanding-peter-540.webp 540w, /insights/assets/the-next-series/outstanding-peter.webp 1080w" sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) 45vw, 33vw"></a><p class="profile-index">人物 01</p><h3>Peter Ng</h3><p class="profile-role">Maduro 創辦人、爵士鋼琴家、房地產從業者</p><p class="profile-bio">Peter Ng 做咗約十五年職業爵士鋼琴家，之後進入房地產行業，並將對音樂、藝術、威士忌同雪茄嘅興趣帶入 Maduro。佢經營嘅空間以現場爵士同文化交流見稱。</p><a class="profile-source" href="https://boulevard.co/post/peter-ng-maduro/" target="_blank" rel="noopener noreferrer">人物資料來源</a></article>
+        <article class="profile"><a class="profile-cover" href="https://weixin.qq.com/sph/AsASofsYvd" target="_blank" rel="noopener noreferrer" aria-label="觀看 Kevin I.C. Koh 嘅微信影片（新視窗開啟）"><img src="/insights/assets/the-next-series/outstanding-kevin-koh.webp" alt="The Next 人物海報：Kevin I.C. Koh" loading="lazy" decoding="async" width="1080" height="1440" srcset="/insights/assets/the-next-series/outstanding-kevin-koh-540.webp 540w, /insights/assets/the-next-series/outstanding-kevin-koh.webp 1080w" sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) 45vw, 33vw"></a><p class="profile-index">人物 02</p><h3>Kevin I.C. Koh</h3><p class="profile-role">藝術家、收藏家、古典珠寶策展人</p><p class="profile-bio">本期海報介紹 Kevin I.C. Koh 為藝術家、收藏家同古典珠寶策展人，聚焦佢嘅藝術判斷、收藏經驗，以及透過珠寶同展覽建立嘅跨文化美學連結。</p><span class="profile-source">簡介根據本期人物海報，外部履歷資料待補。</span></article>
+        <article class="profile"><a class="profile-cover" href="https://weixin.qq.com/sph/AY0RK6NIQE" target="_blank" rel="noopener noreferrer" aria-label="觀看 侯明偉 Desmond How 嘅微信影片（新視窗開啟）"><img src="/insights/assets/the-next-series/outstanding-desmond-how.webp" alt="The Next 人物海報：侯明偉" loading="lazy" decoding="async" width="1080" height="1440" srcset="/insights/assets/the-next-series/outstanding-desmond-how-540.webp 540w, /insights/assets/the-next-series/outstanding-desmond-how.webp 1080w" sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) 45vw, 33vw"></a><p class="profile-index">人物 03</p><h3>侯明偉 Desmond How</h3><p class="profile-role">Gembridge Capital Management 創辦人兼首席投資官</p><p class="profile-bio">侯明偉擁有近三十年投資經驗，長期關注全球新興市場同亞洲信貸策略。佢曾喺 PGIM、野村同高騰工作，現領導 Gembridge Capital Management。</p><a class="profile-source" href="https://gembridgecapital.com/team/desmond-how/" target="_blank" rel="noopener noreferrer">人物資料來源</a></article>
+      </div>
+    </div></section>
+
+    <section class="series partners" id="partners"><div class="shell">
+      <div class="series-head"><p class="series-kicker">FOR NEXT GEN</p><h2>合夥人</h2><p>面向年輕人嘅人物系列，記錄佢哋創辦緊嘅事業、選擇嘅方向，以及同夥伴一齊將想法落實嘅過程。</p></div>
+      <div class="bookshelf">
+        <article class="profile"><a class="profile-cover" href="https://weixin.qq.com/sph/ApTg7CnWvQ" target="_blank" rel="noopener noreferrer" aria-label="觀看 Simone Sin 嘅微信影片（新視窗開啟）"><img src="/insights/assets/the-next-series/partner-simone-sin.webp" alt="The Next 人物海報：Simone Sin" loading="lazy" decoding="async" width="1080" height="1440" srcset="/insights/assets/the-next-series/partner-simone-sin-540.webp 540w, /insights/assets/the-next-series/partner-simone-sin.webp 1080w" sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) 45vw, 33vw"></a><p class="profile-index">人物 01</p><h3>Simone Sin</h3><p class="profile-role">SMTP Consult 創辦人；海外留學及諮詢經歷</p><p class="profile-bio">Simone Sin 創辦 SMTP Consult，為移居新加坡嘅家庭提供禮賓同落地支援。本期由佢嘅海外經歷、創業選擇同服務角度展開。</p><a class="profile-source" href="https://smtpconsult.com/company-profile/" target="_blank" rel="noopener noreferrer">機構資料來源</a></article>
+        <article class="profile"><a class="profile-cover" href="https://weixin.qq.com/sph/AssatN6YE7" target="_blank" rel="noopener noreferrer" aria-label="觀看 Singaballers（王玥与 Ethan） 嘅微信影片（新視窗開啟）"><img src="/insights/assets/the-next-series/partner-wang-yue-ethan.webp" alt="The Next 人物海報：王玥與 Ethan" loading="lazy" decoding="async" width="1024" height="1536" srcset="/insights/assets/the-next-series/partner-wang-yue-ethan-540.webp 540w, /insights/assets/the-next-series/partner-wang-yue-ethan.webp 1024w" sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) 45vw, 33vw"></a><p class="profile-index">人物 02</p><h3>王玥與 Ethan</h3><p class="profile-role">Singaballers 新加坡足球俱樂部</p><p class="profile-bio">兩位年輕合夥人圍繞足球建立社群，連結比賽、夥伴關係同持續參與。Singaballers 嘅公開介紹着重喺新加坡推動七人足球發展。</p><a class="profile-source" href="https://linktr.ee/singaballers" target="_blank" rel="noopener noreferrer">機構資料來源</a></article>
+        <article class="profile"><a class="profile-cover" href="https://weixin.qq.com/sph/ApeZgHNtn0" target="_blank" rel="noopener noreferrer" aria-label="觀看 Barry Li 嘅微信影片（新視窗開啟）"><img src="/insights/assets/the-next-series/partner-barry-li.webp" alt="The Next 人物海報：Barry Li" loading="lazy" decoding="async" width="1080" height="1440" srcset="/insights/assets/the-next-series/partner-barry-li-540.webp 540w, /insights/assets/the-next-series/partner-barry-li.webp 1080w" sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) 45vw, 33vw"></a><p class="profile-index">人物 03</p><h3>Barry Li</h3><p class="profile-role">矽谷孵化器合夥人、創業者</p><p class="profile-bio">Barry Li 活躍於矽谷創業同加速器社群，關注創辦人培育、產品驗證同年輕創業者嘅行動能力。本期由佢喺校園同創業現場嘅實踐展開。</p><a class="profile-source" href="https://www.linkedin.com/in/barryliofficial" target="_blank" rel="noopener noreferrer">人物資料來源</a></article>
+      </div>
+    </div></section>
+
+    <section class="intro" id="timeline"><div class="shell"><h2>身心靈共創年表</h2></div></section>
+    <section class="year"><div class="shell">
+      <div class="year-head"><div class="year-mark">2025</div><p class="year-copy">先收錄資料中年份清楚嘅六項記錄。日期採用原資料顯示嘅發布日期；十一月活動嘅舉行日期仍待確認。</p></div>
+      <div class="timeline">
+        <article class="event">
+          <time class="event-date" datetime="2025-02-19">02.19</time>
+          <div class="event-media"><img src="/insights/assets/meditation-co-creation/activity-01.webp" alt="藝術療癒與冥想活動現場" loading="lazy" decoding="async" width="1206" height="493"></div>
+          <div class="event-copy"><p class="event-type">藝術療癒</p><h3>蛇年伊始，喺藝術療癒中冥想，喺童話故事中想像未來！</h3><a class="source" href="https://mp.weixin.qq.com/s/ibCOepZRvswcNUYaPVSCPw" target="_blank" rel="noopener noreferrer">閱讀原文</a></div>
+        </article>
+        <article class="event">
+          <time class="event-date" datetime="2025-03-22">03.22</time>
+          <div class="event-media"><img src="/insights/assets/meditation-co-creation/activity-02.webp" alt="頌缽療癒活動現場" loading="lazy" decoding="async" width="1206" height="500"></div>
+          <div class="event-copy"><p class="event-type">頌缽療癒</p><h3>頌缽療癒：放低過去，迎接新開始，展開新加坡嘅心靈旅程</h3><a class="source" href="https://mp.weixin.qq.com/s/_2rfmg1ml_6vN__8RqIY7g" target="_blank" rel="noopener noreferrer">閱讀原文</a></div>
+        </article>
+        <article class="event">
+          <time class="event-date" datetime="2025-03-27">03.27</time>
+          <div class="event-media"><img src="/insights/assets/meditation-co-creation/activity-03.webp" alt="狂喜舞蹈與律動冥想活動封面" loading="lazy" decoding="async" width="1206" height="493"></div>
+          <div class="event-copy"><p class="event-type">狂喜舞蹈</p><h3>懷住慶祝嘅心，喺平凡中遇見驚喜：新加坡狂喜舞蹈與律動冥想</h3><a class="source" href="https://mp.weixin.qq.com/s/1u_AzIxvfbuhC-si0nUwug" target="_blank" rel="noopener noreferrer">閱讀原文</a></div>
+        </article>
+        <article class="event">
+          <time class="event-date" datetime="2025-06-20">06.20</time>
+          <div class="event-media"><img src="/insights/assets/meditation-co-creation/activity-04.webp" alt="全日能量之旅活動記錄" loading="lazy" decoding="async" width="1206" height="493"></div>
+          <div class="event-copy"><p class="event-type">聲音與呼吸</p><h3>喺聲音同呼吸之間，遇見煥新嘅自己：MEET IT UP 全日體驗</h3><a class="source" href="https://mp.weixin.qq.com/s/_Qhh92gv1hKM7jxyHuadrQ" target="_blank" rel="noopener noreferrer">閱讀原文</a></div>
+        </article>
+        <article class="event">
+          <time class="event-date" datetime="2025-07-11">07.11</time>
+          <div class="event-media"><img src="/insights/assets/meditation-co-creation/activity-05.webp" alt="夏至雅集活動記錄" loading="lazy" decoding="async" width="1206" height="493"></div>
+          <div class="event-copy"><p class="event-type">夏至雅集</p><h3>夏至雅集回顧：棋局之間，茶香潤心<br>為新加坡都市生活而設嘅療癒體驗</h3><a class="source" href="https://mp.weixin.qq.com/s/-EsfoVeW0E30zfM6Xlngfg" target="_blank" rel="noopener noreferrer">閱讀原文</a></div>
+        </article>
+        <article class="event">
+          <div class="event-date">發布於 11 月 24 日</div>
+          <div class="event-media"><img src="/insights/assets/meditation-co-creation/activity-06.webp" alt="療癒音樂會活動封面" loading="lazy" decoding="async" width="1206" height="492"></div>
+          <div class="event-copy"><p class="event-type">療癒音樂會：活動日期待確認</p><h3>11 月 29 日療癒音樂會回歸：90 分鐘深度體驗</h3><a class="source" href="https://mp.weixin.qq.com/s/HVfIwHgzAfu9bUtezI8rlA" target="_blank" rel="noopener noreferrer">閱讀原文</a></div>
+        </article>
+      </div>
+    </div></section>
+
+    <section class="pending"><div class="shell">
+      <div class="pending-head"><h2>往期活動回顧</h2><p>以下活動保留圖片同原文配對，作為往期內容展示。日期資料補齊後，會再歸入相應年份。</p></div>
+      <div class="archive">
+        <article class="archive-card"><img src="/insights/assets/meditation-co-creation/activity-07.webp" alt="正念整合工作坊活動現場" loading="lazy" decoding="async" width="1206" height="493"><div class="archive-meta"><span>往期活動</span><span>正念整合</span></div><h3>喺靜默中滋養豐盛，提升內在資本：新加坡首創正念整合工作坊</h3><a class="source" href="https://mp.weixin.qq.com/s/XkXagNcaG3nvWn657wSY5A" target="_blank" rel="noopener noreferrer">閱讀原文</a></article>
+        <article class="archive-card"><img src="/insights/assets/meditation-co-creation/activity-08.webp" alt="狂喜舞蹈參加者合照" loading="lazy" decoding="async" width="1206" height="492"><div class="archive-meta"><span>往期活動</span><span>狂喜舞蹈</span></div><h3>兩日狂喜舞蹈圓滿：放低防備，透過身體重新連結</h3><a class="source" href="https://mp.weixin.qq.com/s/QZJi1ALNd0WmCePZE2ttEQ" target="_blank" rel="noopener noreferrer">閱讀原文</a></article>
+        <article class="archive-card"><img src="/insights/assets/meditation-co-creation/activity-09.webp" alt="翡翠山身體聆聽活動記錄" loading="lazy" decoding="async" width="1206" height="494"><div class="archive-meta"><span>往期活動</span><span>身體聆聽</span></div><h3>雨天嘅翡翠山，我哋聽見自己身體嘅聲音</h3><a class="source" href="https://mp.weixin.qq.com/s/3r1kWA6A4JhdrVH3f_SnpQ" target="_blank" rel="noopener noreferrer">閱讀原文</a></article>
+        <article class="archive-card"><img src="/insights/assets/meditation-co-creation/activity-10.webp" alt="鋼琴與內在小孩活動現場" loading="lazy" decoding="async" width="1206" height="491"><div class="archive-meta"><span>往期活動</span><span>內在小孩</span></div><h3>當歌聲遇見內在小孩：Sing For Inner Child</h3><a class="source" href="https://mp.weixin.qq.com/s/ik2-UVk8usDIv27dr2jdeQ" target="_blank" rel="noopener noreferrer">閱讀原文</a></article>
+        <article class="archive-card"><img src="/insights/assets/meditation-co-creation/activity-11.webp" alt="翡翠山自我聆聽活動記錄" loading="lazy" decoding="async" width="1206" height="360"><div class="archive-meta"><span>往期活動</span><span>自我聆聽</span></div><h3>一個冇標準答案嘅下午，我哋喺翡翠山重新聽見自己！</h3><a class="source" href="https://mp.weixin.qq.com/s/Tv0yF4ptBi_CXk0LppV_nw" target="_blank" rel="noopener noreferrer">閱讀原文</a></article>
+      </div>
+    </div></section>
+    <section class="note"><div class="shell"><p>圖片同連結按現有資料逐一配對。日期未確認嘅內容統一收錄喺「往期活動回顧」。</p></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-line"><div class="footer-brand">INNER CAPITAL GROUP</div><small>內在資本</small></div></footer>
+</body>
+</html>

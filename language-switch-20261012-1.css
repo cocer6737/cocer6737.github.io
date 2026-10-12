@@ -1,0 +1,35 @@
+/* Existing warm-paper / brown / burnt-orange brand, with 44px touch targets. */
+.site-header { position: relative; }
+.language-switch { position: absolute; z-index: 30; right: clamp(16px, 2.3vw, 36px); top: 12px; display: flex; align-items: center; padding: 3px; border: 1px solid #c5ab87; border-radius: 6px; background: #f7f4ee; color: #302720; font-family: Arial, sans-serif; box-shadow: none; }
+.language-switch a { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; min-height: 44px; padding: 0 10px; border-radius: 3px; font-size: 13px; font-weight: 600; line-height: 1; letter-spacing: .02em; text-decoration: none; color: #302720; transition: background-color .16s ease, color .16s ease; }
+.language-switch a:hover { background: #e9e0d4; }
+.language-switch a[aria-current="true"] { background: #a8330e; color: #fffaf3; }
+.language-switch a:focus-visible { outline: 2px solid #a8330e; outline-offset: 3px; }
+.site-header > div:first-of-type { padding-top: 70px; padding-bottom: 24px; }
+.site-header.masthead { padding-top: 66px; }
+html[lang="en-SG"] [data-service-summary] h2 { font-size: clamp(2.4rem, 4.4vw, 4.7rem); line-height: 1.12; overflow-wrap: normal; }
+/* The original bilingual eyebrows repeat the title in the English edition. */
+html[lang="en-SG"] [data-service-summary] > div:last-child > p:first-child,
+html[lang="en-SG"] [data-service-card] p.uppercase,
+html[lang="en-SG"] [data-capabilities-grid] article p[class*="mt-5"][class*="text-xs"] { display: none; }
+html[lang="en-SG"] [data-service-card] h3 { font-size: clamp(1.5rem, 2.5vw, 2.5rem); line-height: 1.15; }
+html[lang="en-SG"] [data-capabilities-grid] h3 { font-size: clamp(1.45rem, 2.1vw, 2.15rem); }
+html[lang="en-SG"] .scroll-reveal__segment { white-space: nowrap; }
+html[lang="en-SG"] #about .scroll-reveal__segment { display: inline-block; }
+html[lang="en-SG"] .scroll-reveal__text { letter-spacing: -.01em; }
+html[lang="en-SG"] [role="tab"] { font-size: 14px; }
+html[lang="en-SG"] #about-heading { font-size: clamp(2rem, 4.8vw, 5rem); line-height: 1.18; }
+html[lang="en-SG"] #about-heading > span:not([aria-hidden="true"]) { white-space: pre-wrap; }
+@media (min-width: 1500px) { .site-header > div:first-of-type { padding-top: 28px; } .site-header.masthead { padding-top: 0; } }
+@media (max-width: 640px) {
+  .language-switch { top: 9px; right: 12px; }
+  .language-switch a { min-width: 44px; padding-inline: 8px; font-size: 12px; }
+  .site-header > div:first-of-type { min-height: 112px; padding-top: 65px; padding-bottom: 20px; }
+  .site-header.masthead { padding-top: 65px; }
+  html[lang="en-SG"] header nav:not(.language-switch) a,
+  html[lang="en-SG"] header nav:not(.language-switch) summary { font-size: 12px; letter-spacing: 0; }
+  html[lang="en-SG"] [role="tablist"] { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); overflow: visible; }
+  html[lang="en-SG"] [role="tab"] { min-width: 0; min-height: 72px; padding: 12px; }
+  html[lang="en-SG"] [role="tab"] span { font-size: 14px; line-height: 1.4; }
+}
+@media (prefers-reduced-motion: reduce) { .language-switch a { transition: none; } }

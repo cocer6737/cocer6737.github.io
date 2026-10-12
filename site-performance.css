@@ -2,12 +2,12 @@
 #about .scroll-reveal { min-width: 0; max-width: 100%; }
 #about .scroll-reveal__segment { display: inline; white-space: normal; }
 @media (max-width: 640px) {
-  [role="tablist"][aria-label="选择核心服务"] {
+  [role="tablist"] {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     overflow: visible;
   }
-  [role="tablist"][aria-label="选择核心服务"] [role="tab"] {
+  [role="tablist"] [role="tab"] {
     min-width: 0;
     min-height: 64px;
     padding-inline: 12px;
@@ -17,4 +17,6 @@
   footer a { min-height: 44px; padding-block: 10px; }
 }
 [aria-label="滚动或拖拽，循环浏览四项核心服务"],
+[aria-label="Scroll or drag to browse our four core services"],
+[aria-label="捲動或拖曳以瀏覽四項核心服務"],
 [data-service-card="true"] { touch-action: pan-y pinch-zoom !important; }
