@@ -100,7 +100,10 @@ function transform(value, locale, route, key = '') {
   if (value && typeof value === 'object') {
     const result = Object.fromEntries(Object.entries(value).map(([k,v])=>[k,k === 'wrapSegments' ? v : transform(v,locale,route,k)]));
     if (typeof value.children === 'string' && 'baseOpacity' in value && 'baseRotation' in value) {
-      if (route === '' && homeIntroductionSources.has(value.children)) result.wrapSegments = homeIntroductionSegments(locale);
+      if (route === '' && homeIntroductionSources.has(value.children)) {
+        result.wrapSegments = homeIntroductionSegments(locale);
+        result.textClassName = (result.textClassName || '').replace(/(^|\s)!flex(?=\s|$)/g,' ').trim();
+      }
       else if (locale !== 'zh') result.wrapSegments = locale === 'en' ? result.children.match(/\S+\s*/g) || [result.children] : Array.from(result.children);
     }
     return result;
@@ -156,9 +159,9 @@ function htmlPage(source, locale, route, flight) {
   if (locale==='en' && route==='about') html=html.replace('>，</span>','>. </span>');
   html=syncReveals(html,flight);
   if (locale === 'en' && route === 'insights') html = refineEnglishInsights(html);
-  const head=locales.map(code=>`<link rel="alternate" hreflang="${code==='zh'?'zh-Hans':code==='yue'?'yue-Hant':'en'}" href="https://cocer6737.github.io${destination(code,route)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="https://cocer6737.github.io/${route?route+'/':''}"><link rel="canonical" href="https://cocer6737.github.io${destination(locale,route)}"><link rel="stylesheet" href="/language-switch-${revision}.css"><script defer src="/language-switch-${revision}.js"></script>`;
+  const head=locales.map(code=>`<link rel="alternate" hreflang="${code==='zh'?'zh-Hans':code==='yue'?'yue-Hant':'en'}" href="https://cocer6737.github.io${destination(code,route)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="https://cocer6737.github.io/${route?route+'/':''}"><link rel="canonical" href="https://cocer6737.github.io${destination(locale,route)}"><link rel="stylesheet" href="/language-switch-${revision}.css"><script defer src="/language-switch-${revision}.js"></script>` + (route===''?'<link rel="stylesheet" href="/home-introduction-20261012-1.css">':'');
   // Idempotent when rebuilding from the existing Chinese export.
-  html=html.replace(/<link[^>]+(?:rel="(?:alternate|canonical)"|href="\/language-switch-)[^>]*>|<script[^>]+src="\/language-switch-[^>]*><\/script>/g,'');
+  html=html.replace(/<link[^>]+(?:rel="(?:alternate|canonical)"|href="\/(?:language-switch-|home-introduction-))[^>]*>|<script[^>]+src="\/language-switch-[^>]*><\/script>/g,'');
   return html.replace(/site-performance\.css\?v=[^"<]+/g,'site-performance.css?v=20261012-3').replace('</head>',head+'</head>');
 }
 for (const locale of ['en','yue']) for (const chunk of chunks) {

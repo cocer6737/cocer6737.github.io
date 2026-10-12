@@ -21,6 +21,7 @@ for(const locale of locales) for(const route of routes) {
   assert.equal((markup.match(/rel="canonical"/g)||[]).length,1);
   assert.equal((markup.match(/rel="alternate"/g)||[]).length,4);
   if(route==='') {
+    assert.equal((markup.match(/href="\/home-introduction-20261012-1\.css"/g)||[]).length,1);
     const language=locale||'zh';
     const introduction=markup.match(/<p class="scroll-reveal__text[^>]*>([\s\S]*?)<\/p>/)[1].replace(/<br\s*\/?>/g,'\n').replace(/<[^>]*>/g,'').replaceAll('\u00a0',' ');
     assert.equal(introduction,homeIntroduction[language],'Only the approved home introduction');

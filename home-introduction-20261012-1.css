@@ -1,0 +1,11 @@
+/* Only the three paragraphs in the home introduction use explicit line breaks. */
+#services .scroll-reveal__text {
+  display: block;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  #services .scroll-reveal__text { text-align: center; }
+}
+#services .scroll-reveal__text > .scroll-reveal__segment {
+  display: inline-block;
+}
