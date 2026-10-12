@@ -2,14 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { copy } from './copy.mjs';
+import { refineEnglishInsights } from './english-editorial.mjs';
 
 const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const routes = ['', 'services', 'about', 'insights', 'contact'];
 const locales = ['zh', 'en', 'yue'];
 const chunks = ['0mm76i68izmm_', '0p6x_ig3clcq_', '2fyh3ok81idvc', '2nrgwjf1qvm9h-about-v3', '1nefr52yq5w43-contact-qr-v2'];
 const revision = '20261012-1';
-const updatedEnglishChunks = new Set(['0mm76i68izmm_', '0p6x_ig3clcq_', '2nrgwjf1qvm9h-about-v3']);
-const clientRevision = (chunk, locale) => locale === 'en' && updatedEnglishChunks.has(chunk) ? '20261012-2' : revision;
+const clientRevision = (chunk, locale) => locale === 'en' ? '20261012-3' : revision;
 const untranslated = new Set();
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const unescape = s => s.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
@@ -152,6 +152,7 @@ function htmlPage(source, locale, route, flight) {
   if (!html.includes('class="language-switch"')) html=html.replace(/<header\b([^>]*)>/,(m,attrs)=>`<header${attrs.replace(/class="([^"]*)"/,'class="$1 site-header"')}>${render(selector(locale,route))}`);
   if (locale==='en' && route==='about') html=html.replace('>，</span>','>. </span>');
   html=syncReveals(html,flight);
+  if (locale === 'en' && route === 'insights') html = refineEnglishInsights(html);
   const head=locales.map(code=>`<link rel="alternate" hreflang="${code==='zh'?'zh-Hans':code==='yue'?'yue-Hant':'en'}" href="https://cocer6737.github.io${destination(code,route)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="https://cocer6737.github.io/${route?route+'/':''}"><link rel="canonical" href="https://cocer6737.github.io${destination(locale,route)}"><link rel="stylesheet" href="/language-switch-${revision}.css"><script defer src="/language-switch-${revision}.js"></script>`;
   // Idempotent when rebuilding from the existing Chinese export.
   html=html.replace(/<link[^>]+(?:rel="(?:alternate|canonical)"|href="\/language-switch-)[^>]*>|<script[^>]+src="\/language-switch-[^>]*><\/script>/g,'');

@@ -19,6 +19,21 @@ for(const locale of locales) for(const route of routes) {
   assert.equal((markup.match(/ data-site-language="/g)||[]).length,1,'One language attribute per document');
   assert.equal((markup.match(/rel="canonical"/g)||[]).length,1);
   assert.equal((markup.match(/rel="alternate"/g)||[]).length,4);
+  if(locale==='en') {
+    const text=markup.replace(/<style\b[\s\S]*?<\/style>/g,'').replace(/<[^>]*>/g,'').replaceAll('\u00a0',' ');
+    assert.equal((text.match(/The Next Fortune/g)||[]).length,route===''?1:0,'The Next Fortune is reserved for the home title');
+    if(route===''||route==='about') assert(text.includes('family office infrastructure'),'Keep the approved family office terminology');
+    if(route==='insights') {
+      assert(text.includes('Next-Generation Voices'));
+      assert(text.includes('Wellbeing &amp; Community Events'));
+      assert(text.includes('Tea and Board Games'));
+      for(const retired of ['Chess','supplied material','image and article pairings','Singapore-first','Emerging Partners']) assert(!text.includes(retired),`Retired English wording: ${retired}`);
+    }
+    if(route==='contact') {
+      assert(text.includes('Check Your Details'));
+      assert(text.includes('This form is a demonstration only.'));
+    }
+  }
   if(route==='insights') for(const id of video) assert(markup.includes('https://weixin.qq.com/sph/'+id));
   if(route==='contact') for(const qr of ['whatsapp-qr-20261012.png','wechat-qr-20261012.png']) assert(markup.includes(qr));
   for(const match of html.matchAll(/\b(?:href|src|poster)="(\/[^"#?]*)[^\"]*"/g)) {
