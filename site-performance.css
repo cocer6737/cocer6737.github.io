@@ -1,4 +1,6 @@
 /* Keep native scrolling and all service choices accessible on smaller screens. */
+#about .scroll-reveal { min-width: 0; max-width: 100%; }
+#about .scroll-reveal__segment { display: inline; white-space: normal; }
 @media (max-width: 640px) {
   [role="tablist"][aria-label="选择核心服务"] {
     display: grid;
