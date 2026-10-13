@@ -1,0 +1,39 @@
+/* Quiet text controls; the visible labels are small, but each tap target is 44px. */
+.site-header { position: relative; }
+.language-switch { position: absolute; z-index: 30; right: clamp(16px, 2.3vw, 36px); top: 12px; display: flex; align-items: center; width: max-content; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; color: #302720; font-family: Arial, sans-serif; box-shadow: none; }
+.language-switch a { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 8px; border-radius: 0; font-size: 10px; font-weight: 400; line-height: 1; letter-spacing: .02em; text-decoration: none; color: #302720; background: transparent; }
+.language-switch a + a::before { content: ''; position: absolute; left: 0; top: 16px; height: 12px; border-left: 1px solid #c5ab87; }
+.language-switch a[aria-current="true"] { font-weight: 600; color: #302720; background: transparent; }
+.language-switch a[aria-current="true"]::after { content: ''; position: absolute; bottom: 8px; left: 50%; width: 20px; border-bottom: 1px solid #302720; transform: translateX(-50%); }
+.language-switch a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.language-switch a:focus-visible { outline: 2px solid #302720; outline-offset: -2px; }
+.site-header > div:first-of-type { padding-top: 70px; padding-bottom: 24px; }
+.site-header.masthead { padding-top: 66px; }
+html[lang="en-SG"] [data-service-summary] h2 { font-size: clamp(2.4rem, 4.4vw, 4.7rem); line-height: 1.12; overflow-wrap: normal; }
+html[lang="en-SG"] [data-service-summary] > div:last-child > p:first-child,
+html[lang="en-SG"] [data-service-card] p.uppercase,
+html[lang="en-SG"] [data-capabilities-grid] article p[class*="mt-5"][class*="text-xs"] { display: none; }
+html[lang="en-SG"] [data-service-card] h3 { font-size: clamp(1.5rem, 2.5vw, 2.5rem); line-height: 1.15; }
+html[lang="en-SG"] [data-capabilities-grid] h3 { font-size: clamp(1.45rem, 2.1vw, 2.15rem); }
+html[lang="en-SG"] .scroll-reveal__segment { white-space: nowrap; }
+html[lang="en-SG"] #about .scroll-reveal__segment { display: inline-block; }
+html[lang="en-SG"] .scroll-reveal__text { letter-spacing: -.01em; }
+html[lang="en-SG"] [role="tab"] { font-size: 14px; }
+html[lang="en-SG"] #about-heading { font-size: clamp(2rem, 4.8vw, 5rem); line-height: 1.18; }
+html[lang="en-SG"] #about-heading > span:not([aria-hidden="true"]) { white-space: pre-wrap; }
+@media (min-width: 1500px) { .site-header > div:first-of-type { padding-top: 28px; } .site-header.masthead { padding-top: 0; } }
+@media (max-width: 767px) {
+  .language-switch { position: relative; top: auto; right: auto; margin: 0 auto; }
+  .site-header > div:first-of-type { min-height: 0; padding-top: 24px; padding-bottom: 0; }
+  .site-header.masthead { padding-top: 24px; }
+  .site-header > nav:not(.language-switch) { width: 100%; }
+  .site-header > nav:not(.language-switch) a,
+  .site-header > nav:not(.language-switch) summary { height: 44px; min-height: 44px; }
+}
+@media (max-width: 640px) {
+  html[lang="en-SG"] header nav:not(.language-switch) a,
+  html[lang="en-SG"] header nav:not(.language-switch) summary { font-size: 12px; letter-spacing: 0; }
+  html[lang="en-SG"] [role="tablist"] { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); overflow: visible; }
+  html[lang="en-SG"] [role="tab"] { min-width: 0; min-height: 72px; padding: 12px; }
+  html[lang="en-SG"] [role="tab"] span { font-size: 14px; line-height: 1.4; }
+}

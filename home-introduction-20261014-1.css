@@ -1,0 +1,11 @@
+/* Keep the approved paragraphs and desktop reveal; mobile text wraps naturally. */
+#services .scroll-reveal__text { display: block; text-align: left; }
+#services .scroll-reveal__text > .scroll-reveal__segment { display: inline-block; }
+@media (min-width: 768px) { #services .scroll-reveal__text { text-align: center; } }
+@media (max-width: 767px) {
+  #services .scroll-reveal { transform: none !important; }
+  #services .scroll-reveal__text { text-align: left; word-break: normal; overflow-wrap: normal; }
+  #services .scroll-reveal__text > .scroll-reveal__segment { display: inline; white-space: nowrap; }
+  html[lang="en-SG"] #services .scroll-reveal__text > .scroll-reveal__segment { display: inline-block; white-space: nowrap; }
+  #services .scroll-reveal__character { display: inline; vertical-align: baseline; transform: none !important; filter: none !important; }
+}

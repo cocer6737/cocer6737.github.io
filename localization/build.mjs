@@ -11,6 +11,7 @@ const routes = ['', 'services', 'about', 'insights', 'contact'];
 const locales = ['zh', 'en', 'yue'];
 const chunks = ['0mm76i68izmm_', '0p6x_ig3clcq_', '2fyh3ok81idvc', '2nrgwjf1qvm9h-about-v3', '1nefr52yq5w43-contact-qr-v2'];
 const revision = '20261012-1';
+const selectorRevision = '20261014-1';
 const clientRevision = (chunk, locale) => locale === 'en' ? '20261012-3' : revision;
 const untranslated = new Set();
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -93,7 +94,7 @@ function transform(value, locale, route, key = '') {
       const classes=(node[3].className || '').replace(/ ?site-header/g,'');
       const masthead=classes.includes('bg-ink text-foreground');
       node[3].className = `${classes}${masthead?' site-header':''}`.trim();
-      if(masthead) node[3].children = [selector(locale,route), ...node[3].children];
+      if(masthead) node[3].children = [node[3].children[0], selector(locale,route), ...node[3].children.slice(1)];
       return node;
     }
     return value.map(v=>transform(v,locale,route,key));
@@ -156,13 +157,17 @@ function htmlPage(source, locale, route, flight) {
     return escape(translate(unescape(token),locale));
   });
   html=html.replace(/ data-site-language="[^"]*"/g,'').replace(/<html lang="[^"]*"/,`<html lang="${locale==='zh'?'zh-Hans':locale==='en'?'en-SG':'yue-Hant'}" data-site-language="${locale}"`);
-  if (!html.includes('class="language-switch"')) html=html.replace(/<header\b([^>]*)>/,(m,attrs)=>`<header${attrs.replace(/class="([^"]*)"/,'class="$1 site-header"')}>${render(selector(locale,route))}`);
+  if (!html.includes('class="language-switch"')) html=html.replace(/<header\b([^>]*)>([\s\S]*?)<\/header>/,(m,attrs,content)=>{
+    const brand = content.match(/^(\s*(?:<div\b[\s\S]*?<\/div>|<a\b[\s\S]*?<\/a>))/);
+    if (!brand) throw Error('Missing header brand');
+    return `<header${attrs.replace(/class="([^"]*)"/,'class="$1 site-header"')}>${brand[0]}${render(selector(locale,route))}${content.slice(brand[0].length)}</header>`;
+  });
   if (locale==='en' && route==='about') html=html.replace('>，</span>','>. </span>');
   html=syncReveals(html,flight);
   if (locale === 'en' && route === 'insights') html = refineEnglishInsights(html);
-  const head=locales.map(code=>`<link rel="alternate" hreflang="${code==='zh'?'zh-Hans':code==='yue'?'yue-Hant':'en'}" href="${siteOrigin}${destination(code,route)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${siteOrigin}/${route?route+'/':''}"><link rel="canonical" href="${siteOrigin}${destination(locale,route)}"><link rel="stylesheet" href="/language-switch-${revision}.css"><script defer src="/language-switch-${revision}.js"></script>` + (route===''?'<link rel="stylesheet" href="/home-introduction-20261012-1.css">':'');
+  const head=locales.map(code=>`<link rel="alternate" hreflang="${code==='zh'?'zh-Hans':code==='yue'?'yue-Hant':'en'}" href="${siteOrigin}${destination(code,route)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${siteOrigin}/${route?route+'/':''}"><link rel="canonical" href="${siteOrigin}${destination(locale,route)}"><link rel="stylesheet" href="/language-switch-${selectorRevision}.css"><script defer src="/language-switch-${revision}.js"></script>` + (route===''?'<link rel="stylesheet" href="/home-introduction-20261014-1.css"><script defer src="/home-introduction-motion-20261014-1.js"></script>':'');
   // Idempotent when rebuilding from the existing Chinese export.
-  html=html.replace(/<link[^>]+(?:rel="(?:alternate|canonical)"|href="\/(?:language-switch-|home-introduction-))[^>]*>|<script[^>]+src="\/language-switch-[^>]*><\/script>/g,'');
+  html=html.replace(/<link[^>]+(?:rel="(?:alternate|canonical)"|href="\/(?:language-switch-|home-introduction-))[^>]*>|<script[^>]+src="\/(?:language-switch-|home-introduction-motion-)[^>]*><\/script>/g,'');
   return html.replace(/site-performance\.css\?v=[^"<]+/g,'site-performance.css?v=20261012-3').replace('</head>',head+'</head>');
 }
 for (const locale of ['en','yue']) for (const chunk of chunks) {

@@ -22,16 +22,20 @@ for(const locale of locales) for(const route of routes) {
   assert.equal((markup.match(/ data-site-language="/g)||[]).length,1,'One language attribute per document');
   assert.equal((markup.match(/rel="canonical"/g)||[]).length,1);
   assert.equal((markup.match(/rel="alternate"/g)||[]).length,4);
+  assert(markup.includes('href="/language-switch-20261014-1.css"'));
+  const header=markup.match(/<header\b[\s\S]*?<\/header>/)[0];
+  assert(header.indexOf('INNER CAPITAL GROUP')<header.indexOf('class="language-switch"'),'Brand precedes language controls in visual and keyboard order');
   const pagePath=`${locale?'/'+locale:''}/${route?route+'/':''}`;
   assert(markup.includes(`<link rel="canonical" href="${siteOrigin}${pagePath}">`),'Canonical uses the deployment domain');
   for(const alternate of markup.matchAll(/<link rel="alternate"[^>]+href="([^"]+)"/g)) assert.equal(new URL(alternate[1]).origin,siteOrigin,'Language alternatives stay on the deployment domain');
   if(route==='') {
-    assert.equal((markup.match(/href="\/home-introduction-20261012-1\.css"/g)||[]).length,1);
+    assert.equal((markup.match(/href="\/home-introduction-20261014-1\.css"/g)||[]).length,1);
+    assert.equal((html.match(/src="\/home-introduction-motion-20261014-1\.js"/g)||[]).length,1);
     const language=locale||'zh';
     const introduction=markup.match(/<p class="scroll-reveal__text[^>]*>([\s\S]*?)<\/p>/)[1].replace(/<br\s*\/?>/g,'\n').replace(/<[^>]*>/g,'').replaceAll('\u00a0',' ');
     assert.equal(introduction,homeIntroduction[language],'Only the approved home introduction');
     assert.equal(homeIntroductionSegments(language).join(''),homeIntroduction[language]);
-  }
+  } else assert(!html.includes('home-introduction-motion-20261014-1.js'),'Mobile animation change is scoped to the home page');
   if(locale==='en') {
     const text=markup.replace(/<style\b[\s\S]*?<\/style>/g,'').replace(/<[^>]*>/g,'').replaceAll('\u00a0',' ');
     assert.equal((text.match(/The Next Fortune/g)||[]).length,route===''?1:0,'The Next Fortune is reserved for the home title');
@@ -58,7 +62,8 @@ for(const locale of locales) for(const route of routes) {
 }
 for(const name of fs.readdirSync(path.join(root,'_next/static/chunks')).filter(n=>/-(?:en|yue)-20261012-\d+\.js$/.test(n))) execFileSync(process.execPath,['--check',path.join(root,'_next/static/chunks',name)]);
 execFileSync(process.execPath,['--check',path.join(root,'language-switch-20261012-1.js')]);
+execFileSync(process.execPath,['--check',path.join(root,'home-introduction-motion-20261014-1.js')]);
 function luminance(hex) {const c=hex.match(/\w\w/g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
-const contrast=(luminance('fffaf3')+.05)/(luminance('a8330e')+.05);
+const contrast=(luminance('f7f4ee')+.05)/(luminance('302720')+.05);
 assert(contrast>=4.5);
 console.log(JSON.stringify({documents,validLocalReferences:links,localizedClientChunks:10,selectorContrast:Number(contrast.toFixed(2)),videoLinksPreserved:true,qrImagesPreserved:true},null,2));
