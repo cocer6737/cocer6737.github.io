@@ -18,9 +18,10 @@ export const lawyerCopy = {
   }
 };
 
+const lawyerTitleParts = {zh:['私人财富与','家族办公室法律顾问'],en:['Private Wealth & ','Family Office Counsel'],yue:['私人財富及','家族辦公室法律顧問']};
 export function lawyerCard(locale) {
   const text = lawyerCopy[locale];
-  const titleParts = {zh:['私人财富与','家族办公室法律顾问'],en:['Private Wealth & ','Family Office Counsel'],yue:['私人財富及','家族辦公室法律顧問']}[locale];
+  const titleParts = lawyerTitleParts[locale];
   return node('article', {id:'legal-counsel',className:'lawyer-profile', 'data-lawyer-profile':'true', 'aria-labelledby':'legal-counsel-title'}, [
     node('header', {className:'lawyer-profile__header'}, node('h3', {id:'legal-counsel-title',className:'lawyer-profile__title'}, titleParts.map(part => node('span',{},part)))),
     node('div', {className:'lawyer-profile__copy'}, [
@@ -36,6 +37,8 @@ const titles = {
 };
 export function translateRefinement(value, locale) {
   for (const key of Object.keys(lawyerCopy.zh)) if (value === lawyerCopy.zh[key]) return lawyerCopy[locale][key];
+  const lawyerTitleIndex = lawyerTitleParts.zh.indexOf(value);
+  if (lawyerTitleIndex >= 0) return lawyerTitleParts[locale][lawyerTitleIndex];
   const titleIndex = titles.zh.indexOf(value);
   if (titleIndex >= 0) return titles[locale][titleIndex];
 }
