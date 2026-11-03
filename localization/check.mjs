@@ -54,15 +54,17 @@ for(const locale of locales) for(const route of routes) {
   }
   if(route==='insights') for(const id of video) assert(markup.includes('https://weixin.qq.com/sph/'+id));
   if(route==='contact') for(const qr of ['whatsapp-qr-20261012.png','wechat-qr-20261012.png']) assert(markup.includes(qr));
-  if(['about','contact'].includes(route)) assert(markup.includes('/page-refinements-20261104-1.css'),'Page refinements loaded');
+  if(['about','contact'].includes(route)) assert(markup.includes('/page-refinements-20261104-2.css'),'Page refinements loaded');
   if(route==='about') {
     const legal=lawyerCopy[locale||'zh'];
+    assert(markup.includes(legal.experience),'Preserve the supplied experience statement');
     assert(markup.includes(legal.qualification),'Exact locale-specific qualification');
     assert(markup.includes(legal.focus),'Exact locale-specific practice focus');
     assert.equal((markup.match(/data-lawyer-profile="true"/g)||[]).length,1,'One anonymous legal profile');
     for(const file of fs.readdirSync(path.join(root,locale,route)).filter(f=>/\.(html|txt)$/.test(f))) {
       const content=fs.readFileSync(path.join(root,locale,route,file),'utf8');
       assert(!/于岚|于嵐|Yu Lan|Han Kun|汉坤|漢坤|yu-lan\.jpg/.test(content),`Retired identifying content in ${locale}/about/${file}`);
+      assert(!/竖版人物照片待上传|人物照片待補|Portrait to be added|Portrait of Dr\. C to be added|3:4/.test(content),`Retired portrait placeholder in ${locale}/about/${file}`);
     }
   }
   for(const match of html.matchAll(/\b(?:href|src|poster)="(\/[^"#?]*)[^\"]*"/g)) {
@@ -78,7 +80,7 @@ execFileSync(process.execPath,['--check',path.join(root,'home-introduction-motio
 function luminance(hex) {const c=hex.match(/\w\w/g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
 const contrast=(luminance('f7f4ee')+.05)/(luminance('302720')+.05);
 assert(contrast>=4.5);
-const orangeContrast=(luminance('fe5b02')+.05)/(luminance('302720')+.05);
-assert(orangeContrast>=4.5,'Orange panel body text contrast');
+// The orange panel now uses the user's explicitly chosen white text.
+// This replaces the previous brown-text contrast assertion, not the form colours.
 assert(!fs.existsSync(path.join(root,'images/inner-capital/team/yu-lan.jpg')),'Portrait removed from published assets');
 console.log(JSON.stringify({documents,validLocalReferences:links,localizedClientChunks:10,selectorContrast:Number(contrast.toFixed(2)),videoLinksPreserved:true,qrImagesPreserved:true},null,2));

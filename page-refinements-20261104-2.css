@@ -1,0 +1,127 @@
+/* Scoped editorial typography for the legal profile and contact page. */
+.lawyer-profile {
+  display: grid;
+  gap: 28px;
+  padding: clamp(28px, 4.5vw, 64px);
+  border: 1px solid #b779543d;
+  border-radius: 1.15rem;
+  background: #f3d2bf;
+  color: #302720;
+}
+.lawyer-profile__title {
+  max-width: 19em;
+  font-size: clamp(1.65rem, 3vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -.025em;
+  text-wrap: pretty;
+}
+.lawyer-profile__copy { max-width: 56rem; font-size: clamp(1.0625rem, 1.4vw, 1.3rem); line-height: 1.9; }
+.lawyer-profile__title > span { display: block; }
+.lawyer-profile__copy p + p { margin-top: 16px; }
+
+section[aria-labelledby="contact-title"] {
+  --contact-ink: #ffffff;
+  --contact-muted: #ffffff;
+  --contact-sans: "Helvetica Neue", Arial, "PingFang SC", "PingFang TC", "Microsoft YaHei", sans-serif;
+}
+section[aria-labelledby="contact-title"] > div > div {
+  border-radius: 24px;
+  box-shadow: 0 12px 40px #00000014;
+}
+section[aria-labelledby="contact-title"] > div > div > div {
+  color: var(--contact-ink);
+  padding: clamp(32px, 4vw, 64px);
+}
+section[aria-labelledby="contact-title"] > div > div > div > img { opacity: .16; }
+section[aria-labelledby="contact-title"] > div > div > div > p,
+section[aria-labelledby="contact-title"] > div > div > div ol p,
+section[aria-labelledby="contact-title"] > div > div > div ol span { color: var(--contact-muted); }
+section[aria-labelledby="contact-title"] > div > div > div > p:first-of-type {
+  font-family: var(--contact-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+section[aria-labelledby="contact-title"] > div > div > div > p:not(:first-of-type) {
+  max-width: 32em;
+  margin-top: 28px;
+  font-family: var(--contact-sans);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.9;
+}
+.contact-heading {
+  width: 100%;
+  max-width: none;
+  margin-top: 30px;
+  color: var(--contact-ink);
+  font-size: clamp(2rem, 3.2vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.24;
+  letter-spacing: -.035em;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.contact-heading > span { display: block; text-wrap: pretty; }
+html:not([lang="en-SG"]) .contact-heading,
+html:not([lang="en-SG"]) #consultation-form h2,
+html:not([lang="en-SG"]) .lawyer-profile__title { font-family: var(--contact-sans, "PingFang SC", "PingFang TC", sans-serif); }
+section[aria-labelledby="contact-title"] > div > div > div ol {
+  margin-top: 40px;
+  border-color: #ffffff59;
+  font-family: var(--contact-sans);
+}
+section[aria-labelledby="contact-title"] > div > div > div li { border-color: #ffffff59; padding-block: 22px; }
+section[aria-labelledby="contact-title"] > div > div > div li h2 { font-size: 18px; font-weight: 500; }
+section[aria-labelledby="contact-title"] > div > div > div li p { letter-spacing: 0; font-size: 14px; line-height: 1.7; }
+
+#consultation-form { min-width: 0; background: #f7f4ee; color: #302720; padding: clamp(28px, 4vw, 64px); }
+#consultation-form h2 { max-width: 18em; font-size: clamp(1.65rem, 2.9vw, 3rem); font-weight: 500; line-height: 1.25; letter-spacing: -.025em; text-wrap: pretty; }
+#consultation-form > div:first-child > p:first-child { font-family: var(--contact-sans); font-size: 13px; font-weight: 600; letter-spacing: .12em; color: #7e351e; }
+#consultation-form p { font-family: var(--contact-sans); color: #65564b; font-size: 14px; line-height: 1.8; }
+#consultation-form label, #consultation-form legend { font-family: var(--contact-sans); font-size: 15px; font-weight: 500; line-height: 1.6; color: #302720; }
+#consultation-form input:not([type="checkbox"]), #consultation-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px 16px;
+  border: 1px solid #b9a99a;
+  border-radius: 5px;
+  background: #fffcf8;
+  color: #302720;
+  font-family: var(--contact-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  box-shadow: none;
+}
+#consultation-form input::placeholder, #consultation-form textarea::placeholder { color: #78685a; opacity: 1; }
+#consultation-form input:not([type="checkbox"]):focus, #consultation-form textarea:focus { border-color: #7e351e; outline: 2px solid #7e351e; outline-offset: 2px; }
+#consultation-form input[aria-invalid="true"]:not([type="checkbox"]), #consultation-form textarea[aria-invalid="true"] { border-color: #a12818; }
+#consultation-form [role="alert"] { color: #9b2718; }
+#consultation-form fieldset label { border-color: #c7b9aa; border-radius: 5px; background: #fffcf8; min-width: 0; }
+#consultation-form fieldset label span { color: #302720; font-size: 14px; font-weight: 400; }
+#consultation-form fieldset label:has(input:checked) { background: #f4dfcf; border-color: #7e351e; }
+#consultation-form input[type="checkbox"] { accent-color: #7e351e; border-color: #796553; }
+#consultation-form input[type="checkbox"]:checked { background-color: #7e351e; border-color: #7e351e; }
+#consultation-form button[type="submit"] { min-height: 52px; padding: 14px 24px; border-radius: 5px; background: #302720; color: #fff9f2; font-family: var(--contact-sans); font-size: 15px; font-weight: 500; letter-spacing: .02em; }
+#consultation-form button[type="submit"]:hover { background: #503b2e; }
+#consultation-form button[type="submit"]:focus-visible { outline: 2px solid #7e351e; outline-offset: 3px; }
+@media (min-width: 1024px) {
+  .lawyer-profile { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
+  section[aria-labelledby="contact-title"] > div > div { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); }
+}
+@media (max-width: 639px) {
+  .lawyer-profile__title { font-size: clamp(1.35rem, 6.6vw, 1.65rem); }
+  section[aria-labelledby="contact-title"] > div > div { border-radius: 18px; }
+  section[aria-labelledby="contact-title"] > div > div > div { padding: 40px 24px 30px; }
+  section[aria-labelledby="contact-title"] > div > div > div > p:first-of-type { padding-left: 32px; }
+  .contact-heading { font-size: clamp(1.7rem, 7.8vw, 2.5rem); line-height: 1.28; letter-spacing: -.035em; }
+  html[lang="en-SG"] .contact-heading { font-size: clamp(2rem, 8.8vw, 2.8rem); }
+  section[aria-labelledby="contact-title"] > div > div > div > p:not(:first-of-type) { font-size: 15px; margin-top: 24px; }
+  section[aria-labelledby="contact-title"] > div > div > div ol { margin-top: 28px; }
+  section[aria-labelledby="contact-title"] > div > div > div li { padding-block: 18px; }
+  #consultation-form { padding: 32px 24px; }
+  #consultation-form label, #consultation-form legend { font-size: 14px; }
+}
