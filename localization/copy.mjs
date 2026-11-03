@@ -175,18 +175,13 @@ Canopy, 家族办公室战略合作负责人|Head of Family Office Strategic Par
 同时主理《The Next》，对话卓越人物与新一代创业者，让更多优秀的人被看见、被听见、被连接，并推动上一代的经验、资源与价值观与下一代真正连接。|Through The Next, she speaks with accomplished individuals and emerging entrepreneurs, bringing their stories to a wider audience. The series connects the next generation with the experience, networks and values of those who came before them.|佢亦主理《The Next》，同卓越人物及新一代創業者對談，讓更多優秀嘅人被看見、被聽見同被連結，並將上一代嘅經驗、資源同價值觀傳遞畀下一代。
 她关注的不只是财富传承，更是价值传承与影响力创造。|She focuses on passing on wealth and family values, and on creating lasting impact.|佢關注財富傳承，亦重視價值觀嘅延續同影響力嘅建立。
 桃子|Taozi (桃子)|桃子
-于岚律师|Yu Lan (于岚), Lawyer|于嵐律師
 新加坡国际学校教育社群主理人，深耕国际教育、高端社群运营及资源整合多年，拥有丰富的跨领域合作、项目运营及生态建设经验，擅长连接企业家、高净值家庭与全球优质资源。|Taozi leads an education community focused on international schools in Singapore. She brings years of experience in international education, community management and partnerships, connecting entrepreneurs and high-net-worth families with professional networks worldwide.|桃子係新加坡國際學校教育社群主理人，多年來專注國際教育、高端社群營運同資源整合，累積咗跨領域合作、項目營運同生態建設經驗，擅長連結企業家、高淨值家庭同全球資源。
 作为 Inner Capital Group 生态与运营管理合伙人，负责集团运营管理、项目落地、社群建设及合作伙伴协同，推动企业服务、财富管理、家族办公室及全球资源生态高效协同发展，为客户打造长期信任与价值连接的平台。|At Inner Capital Group, she oversees operations, project delivery, community development and partner relationships. Her work connects business services, wealth management, family offices and global professional networks, helping clients build lasting relationships.|作為 Inner Capital Group 生態與營運管理合夥人，佢負責集團營運、項目落地、社群建設同夥伴協作，推動企業服務、財富管理、家族辦公室同全球資源網絡協同發展，為客戶建立長遠信任同價值連結。
-新加坡汉坤律师事务所合伙人，拥有十余年新加坡私人财富法律服务经验，专注于家族办公室、财富规划、跨境投资及企业法律事务，长期服务高净值家庭、企业家及家族办公室。|A partner at Han Kun in Singapore, Yu Lan has over a decade of experience in Singapore private wealth legal services. She focuses on family offices, wealth planning, cross-border investment and corporate matters, advising high-net-worth families, entrepreneurs and family offices.|于嵐係新加坡漢坤律師事務所合夥人，擁有十多年新加坡私人財富法律服務經驗，專注家族辦公室、財富規劃、跨境投資同企業法律事務，長期服務高淨值家庭、企業家同家族辦公室。
-新加坡注册外国律师，持有中华人民共和国法律职业资格、英国律师执业资格及美国纽约州律师执业资格，具备丰富的跨境法律服务经验。|She is a registered foreign lawyer in Singapore and holds legal qualifications in the People's Republic of China, the United Kingdom and New York State, with extensive cross-border legal experience.|佢係新加坡註冊外國律師，持有中華人民共和國、英國同美國紐約州嘅法律執業資格，具備豐富跨境法律服務經驗。
-作为 Inner Capital Group 私人财富法律顾问，负责家族办公室架构设计、财富传承规划、跨境资产配置及企业法律合规，为高净值家庭提供国际化法律支持。|As Inner Capital Group's Private Wealth Legal Adviser, she supports family office structuring, succession planning, cross-border asset allocation and corporate legal compliance, providing international legal support for high-net-worth families.|作為 Inner Capital Group 私人財富法律顧問，佢支援家族辦公室架構設計、財富傳承規劃、跨境資產配置同企業法律合規，為高淨值家庭提供國際法律支援。
 上海交通大学控制科学与工程（强化学习方向）博士，长期专注于人工智能、大语言模型（LLM）、机器学习及智能决策系统研发。|Dr. C holds a PhD in Control Science and Engineering from Shanghai Jiao Tong University, with a focus on reinforcement learning. His research and development work spans AI, large language models, machine learning and intelligent decision systems.|Dr. C 擁有上海交通大學控制科學與工程博士學位，研究方向為強化學習，長期專注 AI、大型語言模型、機器學習同智能決策系統研發。
 曾任职于 Shopee、快手科技、SmartNews、BizReach 等国际科技企业，在 AI Agent、推荐系统及智能平台建设方面拥有丰富的研发与落地经验。|He has worked at international technology companies including Shopee, Kuaishou, SmartNews and BizReach, with extensive experience developing and deploying AI agents, recommendation systems and intelligent platforms.|佢曾喺 Shopee、快手科技、SmartNews 同 BizReach 等國際科技企業工作，具備 AI Agent、推薦系統同智能平台嘅研發及落地經驗。
 作为 Inner Capital Group 技术总负责人，负责集团 AI 战略规划、智能平台建设及 AI Agent 研发，推动人工智能在财富管理、客户服务、风险管理及企业运营等场景的创新应用，打造新一代 AI 驱动的财富科技平台。|At Inner Capital Group, he oversees AI strategy, platform development and AI agent research. His work applies AI to wealth management, client service, risk management and business operations, supporting the development of an AI-powered WealthTech platform.|作為 Inner Capital Group 技術總負責人，佢負責 AI 策略、智能平台建設同 AI Agent 研發，推動 AI 喺財富管理、客戶服務、風險管理同企業營運嘅應用，建立 AI 驅動嘅財富科技平台。
 Vivi Wu 吴昊雯人物照片|Portrait of Vivi Wu|Vivi Wu 吳昊雯人物照片
 桃子人物照片|Portrait of Taozi|桃子人物照片
-于岚律师人物照片|Portrait of Yu Lan|于嵐律師人物照片
 Dr.C 的竖版人物照片待上传|Portrait of Dr. C to be added|Dr. C 人物照片待補
 竖版人物照片待上传|Portrait to be added|人物照片待補
 为什么选择 Inner Capital Group？|Why Inner Capital Group?|點解選擇 Inner Capital Group？
@@ -208,7 +203,7 @@ AI 科技驱动|AI-enabled Support|AI 科技支援
 确认下一步|Agree on Next Steps|確認下一步
 沟通方式 · 所需资料 · 后续安排|Communication, information and follow-up|溝通方式、所需資料與後續安排
 预约信息|Enquiry Details|預約資料
-请告诉我们，您正在关注什么。|Tell us what matters to you.|話畀我哋知您關注緊啲咩。
+我们可以怎样帮助您？|How can we help?|有咩可以幫到您？
 当前表单为前端交互样板。填写内容不会保存、发送或共享。|This form is a demonstration only. Your entries are not stored, sent or shared.|呢個表格只作互動示範，您填寫嘅內容唔會被儲存、傳送或分享。
 姓名 |Name |姓名 
 请输入您的姓名|Enter your name|請填寫您嘅姓名

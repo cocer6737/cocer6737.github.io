@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {homeIntroduction, homeIntroductionSegments} from './home-introduction.mjs';
 import {siteOrigin} from './site-config.mjs';
+import {lawyerCopy} from './page-refinements.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const routes=['','services','about','insights','contact'];
 const locales=['','en','yue'];
@@ -53,6 +54,17 @@ for(const locale of locales) for(const route of routes) {
   }
   if(route==='insights') for(const id of video) assert(markup.includes('https://weixin.qq.com/sph/'+id));
   if(route==='contact') for(const qr of ['whatsapp-qr-20261012.png','wechat-qr-20261012.png']) assert(markup.includes(qr));
+  if(['about','contact'].includes(route)) assert(markup.includes('/page-refinements-20261104-1.css'),'Page refinements loaded');
+  if(route==='about') {
+    const legal=lawyerCopy[locale||'zh'];
+    assert(markup.includes(legal.qualification),'Exact locale-specific qualification');
+    assert(markup.includes(legal.focus),'Exact locale-specific practice focus');
+    assert.equal((markup.match(/data-lawyer-profile="true"/g)||[]).length,1,'One anonymous legal profile');
+    for(const file of fs.readdirSync(path.join(root,locale,route)).filter(f=>/\.(html|txt)$/.test(f))) {
+      const content=fs.readFileSync(path.join(root,locale,route,file),'utf8');
+      assert(!/于岚|于嵐|Yu Lan|Han Kun|汉坤|漢坤|yu-lan\.jpg/.test(content),`Retired identifying content in ${locale}/about/${file}`);
+    }
+  }
   for(const match of html.matchAll(/\b(?:href|src|poster)="(\/[^"#?]*)[^\"]*"/g)) {
     const raw=match[1], target=path.join(root,raw);
     assert(fs.existsSync(target)||fs.existsSync(path.join(target,'index.html')),`Missing ${raw} in ${filename}`);
@@ -60,10 +72,13 @@ for(const locale of locales) for(const route of routes) {
   }
   documents++;
 }
-for(const name of fs.readdirSync(path.join(root,'_next/static/chunks')).filter(n=>/-(?:en|yue)-20261012-\d+\.js$/.test(n))) execFileSync(process.execPath,['--check',path.join(root,'_next/static/chunks',name)]);
+for(const name of fs.readdirSync(path.join(root,'_next/static/chunks')).filter(n=>/-(?:en|yue)-20\d{6}-\d+\.js$/.test(n))) execFileSync(process.execPath,['--check',path.join(root,'_next/static/chunks',name)]);
 execFileSync(process.execPath,['--check',path.join(root,'language-switch-20261012-1.js')]);
 execFileSync(process.execPath,['--check',path.join(root,'home-introduction-motion-20261014-1.js')]);
 function luminance(hex) {const c=hex.match(/\w\w/g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
 const contrast=(luminance('f7f4ee')+.05)/(luminance('302720')+.05);
 assert(contrast>=4.5);
+const orangeContrast=(luminance('fe5b02')+.05)/(luminance('302720')+.05);
+assert(orangeContrast>=4.5,'Orange panel body text contrast');
+assert(!fs.existsSync(path.join(root,'images/inner-capital/team/yu-lan.jpg')),'Portrait removed from published assets');
 console.log(JSON.stringify({documents,validLocalReferences:links,localizedClientChunks:10,selectorContrast:Number(contrast.toFixed(2)),videoLinksPreserved:true,qrImagesPreserved:true},null,2));

@@ -5,19 +5,22 @@ import { copy } from './copy.mjs';
 import { refineEnglishInsights } from './english-editorial.mjs';
 import { homeIntroduction, homeIntroductionSources, homeIntroductionSegments } from './home-introduction.mjs';
 import { siteOrigin } from './site-config.mjs';
+import { refineNode, refineHtml, translateRefinement } from './page-refinements.mjs';
 
 const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const routes = ['', 'services', 'about', 'insights', 'contact'];
 const locales = ['zh', 'en', 'yue'];
-const chunks = ['0mm76i68izmm_', '0p6x_ig3clcq_', '2fyh3ok81idvc', '2nrgwjf1qvm9h-about-v3', '1nefr52yq5w43-contact-qr-v2'];
+const chunks = ['0mm76i68izmm_', '0p6x_ig3clcq_', '2fyh3ok81idvc', '2nrgwjf1qvm9h-about-v3', '1nefr52yq5w43-contact-qr-v3-20261104-1'];
 const revision = '20261012-1';
 const selectorRevision = '20261014-1';
-const clientRevision = (chunk, locale) => locale === 'en' ? '20261012-3' : revision;
+const clientRevision = (chunk, locale) => chunk.includes('contact-qr-v3') ? '20261104-1' : locale === 'en' ? '20261012-3' : revision;
 const untranslated = new Set();
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const unescape = s => s.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
 const destination = (locale, route) => `${locale === 'zh' ? '' : '/' + locale}/${route ? route + '/' : ''}`;
 function translate(value, locale, report = true) {
+  const refined = translateRefinement(value, locale);
+  if (refined !== undefined) return refined;
   if (homeIntroductionSources.has(value)) return homeIntroduction[locale];
   if (locale === 'zh') {
     if (value === 'Inner Capital Group｜中文首页视觉样板') return 'Inner Capital Group｜财富、企业与全球资源';
@@ -73,6 +76,8 @@ function render(value) {
   return `<${tag}${Object.entries(props).map(([key,v])=>` ${key === 'className' ? 'class' : key === 'hrefLang' ? 'hreflang' : key}="${escape(v)}"`).join('')}>${render(children)}</${tag}>`;
 }
 function transform(value, locale, route, key = '') {
+  const refinement = refineNode(value, locale, route);
+  if (refinement) return refinement;
   if (typeof value === 'string') {
     if (key === 'href') return localHref(value, locale);
     if (['src','srcSet','poster'].includes(key)) return chunkRef(value,locale);
@@ -164,11 +169,14 @@ function htmlPage(source, locale, route, flight) {
   });
   if (locale==='en' && route==='about') html=html.replace('>，</span>','>. </span>');
   html=syncReveals(html,flight);
+  html=refineHtml(html,locale,route,render);
   if (locale === 'en' && route === 'insights') html = refineEnglishInsights(html);
   const head=locales.map(code=>`<link rel="alternate" hreflang="${code==='zh'?'zh-Hans':code==='yue'?'yue-Hant':'en'}" href="${siteOrigin}${destination(code,route)}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${siteOrigin}/${route?route+'/':''}"><link rel="canonical" href="${siteOrigin}${destination(locale,route)}"><link rel="stylesheet" href="/language-switch-${selectorRevision}.css"><script defer src="/language-switch-${revision}.js"></script>` + (route===''?'<link rel="stylesheet" href="/home-introduction-20261014-1.css"><script defer src="/home-introduction-motion-20261014-1.js"></script>':'');
   // Idempotent when rebuilding from the existing Chinese export.
   html=html.replace(/<link[^>]+(?:rel="(?:alternate|canonical)"|href="\/(?:language-switch-|home-introduction-))[^>]*>|<script[^>]+src="\/(?:language-switch-|home-introduction-motion-)[^>]*><\/script>/g,'');
-  return html.replace(/site-performance\.css\?v=[^"<]+/g,'site-performance.css?v=20261012-3').replace('</head>',head+'</head>');
+  html=html.replace(/<link[^>]+href="\/page-refinements-[^"]+"[^>]*>/g,'');
+  const refinements = ['about','contact'].includes(route) ? '<link rel="stylesheet" href="/page-refinements-20261104-1.css">' : '';
+  return html.replace(/site-performance\.css\?v=[^"<]+/g,'site-performance.css?v=20261012-3').replace('</head>',head+refinements+'</head>');
 }
 for (const locale of ['en','yue']) for (const chunk of chunks) {
   let text=fs.readFileSync(path.join(site,'_next/static/chunks',chunk+'.js'),'utf8');
